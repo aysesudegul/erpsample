@@ -1,92 +1,92 @@
--- ERP Procurement & Inventory Management Case Study
--- PostgreSQL reporting database structure
+-- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- PostgreSQL raporlama veritabanı tablo yapısı
 
-DROP TABLE IF EXISTS stock_movements;
-DROP TABLE IF EXISTS sales_order_items;
-DROP TABLE IF EXISTS sales_orders;
-DROP TABLE IF EXISTS purchase_order_items;
-DROP TABLE IF EXISTS purchase_orders;
-DROP TABLE IF EXISTS products;
-DROP TABLE IF EXISTS customers;
-DROP TABLE IF EXISTS vendors;
+DROP TABLE IF EXISTS stok_hareketleri;
+DROP TABLE IF EXISTS satis_siparisi_kalemleri;
+DROP TABLE IF EXISTS satis_siparisleri;
+DROP TABLE IF EXISTS satin_alma_siparisi_kalemleri;
+DROP TABLE IF EXISTS satin_alma_siparisleri;
+DROP TABLE IF EXISTS urunler;
+DROP TABLE IF EXISTS musteriler;
+DROP TABLE IF EXISTS tedarikciler;
 
-CREATE TABLE vendors (
-    vendor_id SERIAL PRIMARY KEY,
-    vendor_name VARCHAR(150) NOT NULL UNIQUE,
-    country VARCHAR(100) DEFAULT 'Turkey',
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE tedarikciler (
+    tedarikci_id SERIAL PRIMARY KEY,
+    tedarikci_adi VARCHAR(150) NOT NULL UNIQUE,
+    ulke VARCHAR(100) DEFAULT 'Türkiye',
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE customers (
-    customer_id SERIAL PRIMARY KEY,
-    customer_name VARCHAR(150) NOT NULL UNIQUE,
-    country VARCHAR(100) DEFAULT 'Turkey',
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE musteriler (
+    musteri_id SERIAL PRIMARY KEY,
+    musteri_adi VARCHAR(150) NOT NULL UNIQUE,
+    ulke VARCHAR(100) DEFAULT 'Türkiye',
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE products (
-    product_id SERIAL PRIMARY KEY,
-    product_name VARCHAR(150) NOT NULL UNIQUE,
-    cost NUMERIC(12, 2) NOT NULL CHECK (cost >= 0),
-    sales_price NUMERIC(12, 2) NOT NULL CHECK (sales_price >= 0),
-    min_stock INTEGER NOT NULL CHECK (min_stock >= 0),
-    max_stock INTEGER NOT NULL CHECK (max_stock >= min_stock),
-    active BOOLEAN NOT NULL DEFAULT TRUE,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE urunler (
+    urun_id SERIAL PRIMARY KEY,
+    urun_adi VARCHAR(150) NOT NULL UNIQUE,
+    maliyet NUMERIC(12, 2) NOT NULL CHECK (maliyet >= 0),
+    satis_fiyati NUMERIC(12, 2) NOT NULL CHECK (satis_fiyati >= 0),
+    minimum_stok INTEGER NOT NULL CHECK (minimum_stok >= 0),
+    maksimum_stok INTEGER NOT NULL CHECK (maksimum_stok >= minimum_stok),
+    aktif BOOLEAN NOT NULL DEFAULT TRUE,
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE purchase_orders (
-    purchase_order_id SERIAL PRIMARY KEY,
-    po_number VARCHAR(30) NOT NULL UNIQUE,
-    vendor_id INTEGER NOT NULL REFERENCES vendors(vendor_id),
-    order_date DATE NOT NULL,
-    status VARCHAR(30) NOT NULL CHECK (status IN ('Draft', 'Confirmed', 'Received', 'Cancelled')),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE satin_alma_siparisleri (
+    satin_alma_siparisi_id SERIAL PRIMARY KEY,
+    siparis_no VARCHAR(30) NOT NULL UNIQUE,
+    tedarikci_id INTEGER NOT NULL REFERENCES tedarikciler(tedarikci_id),
+    siparis_tarihi DATE NOT NULL,
+    durum VARCHAR(30) NOT NULL CHECK (durum IN ('Taslak', 'Onaylandı', 'Alındı', 'İptal')),
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE purchase_order_items (
-    purchase_order_item_id SERIAL PRIMARY KEY,
-    purchase_order_id INTEGER NOT NULL REFERENCES purchase_orders(purchase_order_id) ON DELETE CASCADE,
-    product_id INTEGER NOT NULL REFERENCES products(product_id),
-    quantity INTEGER NOT NULL CHECK (quantity > 0),
-    unit_cost NUMERIC(12, 2) NOT NULL CHECK (unit_cost >= 0),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (purchase_order_id, product_id)
+CREATE TABLE satin_alma_siparisi_kalemleri (
+    satin_alma_siparisi_kalemi_id SERIAL PRIMARY KEY,
+    satin_alma_siparisi_id INTEGER NOT NULL REFERENCES satin_alma_siparisleri(satin_alma_siparisi_id) ON DELETE CASCADE,
+    urun_id INTEGER NOT NULL REFERENCES urunler(urun_id),
+    miktar INTEGER NOT NULL CHECK (miktar > 0),
+    birim_maliyet NUMERIC(12, 2) NOT NULL CHECK (birim_maliyet >= 0),
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (satin_alma_siparisi_id, urun_id)
 );
 
-CREATE TABLE sales_orders (
-    sales_order_id SERIAL PRIMARY KEY,
-    so_number VARCHAR(30) NOT NULL UNIQUE,
-    customer_id INTEGER NOT NULL REFERENCES customers(customer_id),
-    order_date DATE NOT NULL,
-    status VARCHAR(30) NOT NULL CHECK (status IN ('Draft', 'Confirmed', 'Delivered', 'Cancelled')),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE satis_siparisleri (
+    satis_siparisi_id SERIAL PRIMARY KEY,
+    siparis_no VARCHAR(30) NOT NULL UNIQUE,
+    musteri_id INTEGER NOT NULL REFERENCES musteriler(musteri_id),
+    siparis_tarihi DATE NOT NULL,
+    durum VARCHAR(30) NOT NULL CHECK (durum IN ('Taslak', 'Onaylandı', 'Teslim Edildi', 'İptal')),
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE sales_order_items (
-    sales_order_item_id SERIAL PRIMARY KEY,
-    sales_order_id INTEGER NOT NULL REFERENCES sales_orders(sales_order_id) ON DELETE CASCADE,
-    product_id INTEGER NOT NULL REFERENCES products(product_id),
-    quantity INTEGER NOT NULL CHECK (quantity > 0),
-    unit_price NUMERIC(12, 2) NOT NULL CHECK (unit_price >= 0),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE (sales_order_id, product_id)
+CREATE TABLE satis_siparisi_kalemleri (
+    satis_siparisi_kalemi_id SERIAL PRIMARY KEY,
+    satis_siparisi_id INTEGER NOT NULL REFERENCES satis_siparisleri(satis_siparisi_id) ON DELETE CASCADE,
+    urun_id INTEGER NOT NULL REFERENCES urunler(urun_id),
+    miktar INTEGER NOT NULL CHECK (miktar > 0),
+    birim_fiyat NUMERIC(12, 2) NOT NULL CHECK (birim_fiyat >= 0),
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (satis_siparisi_id, urun_id)
 );
 
-CREATE TABLE stock_movements (
-    stock_movement_id SERIAL PRIMARY KEY,
-    product_id INTEGER NOT NULL REFERENCES products(product_id),
-    movement_date DATE NOT NULL,
-    movement_type VARCHAR(30) NOT NULL CHECK (movement_type IN ('PURCHASE_IN', 'SALES_OUT')),
-    quantity INTEGER NOT NULL CHECK (quantity > 0),
-    reference_document VARCHAR(30) NOT NULL,
-    notes TEXT,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE stok_hareketleri (
+    stok_hareketi_id SERIAL PRIMARY KEY,
+    urun_id INTEGER NOT NULL REFERENCES urunler(urun_id),
+    hareket_tarihi DATE NOT NULL,
+    hareket_tipi VARCHAR(30) NOT NULL CHECK (hareket_tipi IN ('SATIN_ALMA_GIRIS', 'SATIS_CIKIS')),
+    miktar INTEGER NOT NULL CHECK (miktar > 0),
+    referans_belge VARCHAR(30) NOT NULL,
+    aciklama TEXT,
+    olusturulma_tarihi TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX idx_purchase_orders_vendor_id ON purchase_orders(vendor_id);
-CREATE INDEX idx_purchase_order_items_product_id ON purchase_order_items(product_id);
-CREATE INDEX idx_sales_orders_customer_id ON sales_orders(customer_id);
-CREATE INDEX idx_sales_order_items_product_id ON sales_order_items(product_id);
-CREATE INDEX idx_stock_movements_product_id ON stock_movements(product_id);
-CREATE INDEX idx_stock_movements_reference_document ON stock_movements(reference_document);
+CREATE INDEX idx_satin_alma_siparisleri_tedarikci_id ON satin_alma_siparisleri(tedarikci_id);
+CREATE INDEX idx_satin_alma_kalemleri_urun_id ON satin_alma_siparisi_kalemleri(urun_id);
+CREATE INDEX idx_satis_siparisleri_musteri_id ON satis_siparisleri(musteri_id);
+CREATE INDEX idx_satis_kalemleri_urun_id ON satis_siparisi_kalemleri(urun_id);
+CREATE INDEX idx_stok_hareketleri_urun_id ON stok_hareketleri(urun_id);
+CREATE INDEX idx_stok_hareketleri_referans_belge ON stok_hareketleri(referans_belge);

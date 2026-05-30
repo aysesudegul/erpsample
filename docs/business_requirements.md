@@ -1,55 +1,54 @@
-# Business Requirements
+# İş Gereksinimleri
 
-## Project Context
+## Proje Bağlamı
 
-NovaTech Office Supplies is a small office equipment company that purchases office technology and furniture from vendors, stores products in inventory, and sells them to business customers.
+NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
 
-The company wants a simple ERP process that supports purchasing, goods receipt, sales delivery, stock tracking, and basic inventory reporting.
+Bu portföy projesinde süreç Odoo ERP üzerinde uygulanmış, ardından PostgreSQL ve Power BI çıktılarıyla raporlanabilir hale getirilmiştir.
 
-## Business Goals
+## İş Hedefleri
 
-- Maintain clean vendor, customer, and product master data.
-- Create Purchase Orders for products ordered from vendors.
-- Record Goods Receipts when purchased products arrive.
-- Increase stock automatically after receipts.
-- Create Sales Orders for customer demand.
-- Validate deliveries and reduce stock after shipment.
-- Track stock movements for audit and analysis.
-- Identify products below minimum stock.
-- Suggest replenishment quantities based on minimum and maximum stock levels.
-- Produce SQL-based reporting for procurement and inventory decisions.
+- Tedarikçi, müşteri ve ürün ana verilerini düzenli şekilde yönetmek.
+- Tedarikçiler için satın alma siparişi oluşturmak.
+- Gelen ürünleri mal kabul işlemiyle stoğa almak.
+- Mal kabul sonrası stok artışını izlemek.
+- Müşteri talepleri için satış siparişi oluşturmak.
+- Teslimat doğrulaması sonrası stok çıkışını izlemek.
+- Stok hareketlerini belge referanslarıyla takip etmek.
+- Minimum stok altındaki ürünleri belirlemek.
+- Maksimum stok seviyesine göre yenileme miktarı önermek.
+- SQL ve Power BI ile satın alma ve stok raporları hazırlamak.
 
-## Business Scope
+## Kapsam
 
-The scope includes:
+Proje kapsamına giren alanlar:
 
-- Vendors
-- Customers
-- Products
-- Purchase Orders
-- Purchase Order lines
-- Sales Orders
-- Sales Order lines
-- Stock movement records
-- Inventory reporting
-- Replenishment analysis
+- Tedarikçi ana verileri
+- Müşteri ana verileri
+- Ürün ana verileri
+- Satın alma siparişleri
+- Satın alma siparişi kalemleri
+- Satış siparişleri
+- Satış siparişi kalemleri
+- Mal kabul ve teslimat hareketleri
+- Stok hareket takibi
+- PostgreSQL raporları
+- Power BI chart data dosyaları
 
-The scope does not include:
+Proje kapsamına girmeyen alanlar:
 
-- Accounting postings
-- Invoicing
-- Payments
-- Warehouse bin management
-- Barcode device integration
-- Direct connection to an Odoo production database
+- Muhasebe kayıtları
+- Faturalama
+- Ödeme işlemleri
+- Depo lokasyonu veya raf yönetimi
+- Barkod cihaz entegrasyonu
+- Odoo canlı veritabanına doğrudan bağlantı
 
-## Master Data Requirements
+## Ana Veri Gereksinimleri
 
-### Vendors
+### Tedarikçiler
 
-The system should store vendors that supply products to NovaTech Office Supplies.
-
-Sample vendors:
+Odoo'da aşağıdaki tedarikçi ana verileri oluşturulmuştur:
 
 - Anadolu Electronics
 - OfficePro Supply
@@ -57,11 +56,9 @@ Sample vendors:
 - Global Office Supplier
 - Akdeniz Computer Systems
 
-### Customers
+### Müşteriler
 
-The system should store business customers that buy products from NovaTech Office Supplies.
-
-Sample customers:
+Odoo'da aşağıdaki müşteri ana verileri oluşturulmuştur:
 
 - ABC Consulting
 - Mavi Software
@@ -69,11 +66,11 @@ Sample customers:
 - Northwind Logistics
 - Bright Future Education
 
-### Products
+### Ürünler
 
-The system should store product cost, sales price, minimum stock, and maximum stock.
+Ürünlerde maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileri takip edilmiştir.
 
-| Product | Cost | Sales Price | Minimum Stock | Maximum Stock |
+| Ürün | Maliyet | Satış Fiyatı | Minimum Stok | Maksimum Stok |
 | --- | ---: | ---: | ---: | ---: |
 | Wireless Mouse | 150 | 250 | 30 | 60 |
 | Mechanical Keyboard | 300 | 500 | 30 | 50 |
@@ -84,62 +81,63 @@ The system should store product cost, sales price, minimum stock, and maximum st
 | Office Chair | 1200 | 2200 | 10 | 25 |
 | Barcode Scanner | 2500 | 3900 | 5 | 15 |
 
-## Transaction Requirements
+## İşlem Gereksinimleri
 
-### Purchase Process
+### Satın Alma Süreci
 
-The purchasing process should support creating Purchase Orders for vendors and receiving ordered products into stock.
+Odoo'da tedarikçi bazlı satın alma siparişleri oluşturulmuş ve ürünler mal kabul işlemiyle stoğa alınmıştır.
 
-Sample Purchase Order PO-001:
+PO-001:
 
-- Vendor: Anadolu Electronics
-- Wireless Mouse: 30 units at 150
-- Mechanical Keyboard: 20 units at 300
-- 24-inch Monitor: 10 units at 3000
-- Status: Received
+- Tedarikçi: Anadolu Electronics
+- Wireless Mouse: 30 adet, birim maliyet 150
+- Mechanical Keyboard: 20 adet, birim maliyet 300
+- 24-inch Monitor: 10 adet, birim maliyet 3000
+- Durum: Alındı
 
-Sample Purchase Order PO-002:
+PO-002:
 
-- Vendor: OfficePro Supply
-- Wireless Mouse: 20 units at 150
-- Mechanical Keyboard: 10 units at 300
-- Status: Received
+- Tedarikçi: OfficePro Supply
+- Wireless Mouse: 20 adet, birim maliyet 150
+- Mechanical Keyboard: 10 adet, birim maliyet 300
+- Durum: Alındı
 
-### Sales Process
+### Satış Süreci
 
-The sales process should support creating Sales Orders for customers and validating delivery.
+Odoo'da müşteri için satış siparişi oluşturulmuş ve teslimat doğrulanarak stok çıkışı tamamlanmıştır.
 
-Sample Sales Order SO-001:
+SO-001:
 
-- Customer: ABC Consulting
-- Wireless Mouse: 5 units at 250
-- Mechanical Keyboard: 3 units at 500
-- 24-inch Monitor: 2 units at 4500
-- Status: Delivered
+- Müşteri: ABC Consulting
+- Wireless Mouse: 5 adet, birim satış fiyatı 250
+- Mechanical Keyboard: 3 adet, birim satış fiyatı 500
+- 24-inch Monitor: 2 adet, birim satış fiyatı 4500
+- Durum: Teslim Edildi
 
-## Reporting Requirements
+## Raporlama Gereksinimleri
 
-The reporting database should provide:
+PostgreSQL ve Power BI tarafında aşağıdaki analizler hazırlanmıştır:
 
-- Current stock by product
-- Products below minimum stock
-- Total spend by vendor
-- Top selling products
-- Stock movement history
-- Purchase Order status summary
-- Sales Order status summary
-- Gross margin by product
-- Replenishment suggestions
+- Ürün bazlı mevcut stok
+- Minimum stok altındaki ürünler
+- Tedarikçi bazlı toplam satın alma harcaması
+- En çok satan ürünler
+- Stok hareket geçmişi
+- Satın alma siparişi durum analizi
+- Satış siparişi durum analizi
+- Ürün bazlı brüt kar marjı
+- Yenileme önerisi
 
-## Success Criteria
+## Başarı Kriterleri
 
-The project is successful when:
+Proje başarılı kabul edilir, çünkü:
 
-- The business process is clearly documented.
-- The Odoo process steps are easy for a beginner to follow.
-- The PostgreSQL files can create the reporting tables and insert sample data.
-- The report queries calculate stock from movement records.
-- The sample stock results match the expected quantities:
+- Odoo üzerinde uçtan uca satın alma ve stok süreci uygulanmıştır.
+- Süreç profesyonel portföy dokümantasyonu haline getirilmiştir.
+- PostgreSQL dosyaları raporlama tablolarını ve örnek verileri oluşturur.
+- Stok raporları stok hareketlerinden hesaplanır.
+- Power BI için dashboard verileri hazırlanmıştır.
+- Örnek işlem sonrası stok değerleri beklenen sonuçları verir:
   - Wireless Mouse: 45
   - Mechanical Keyboard: 27
   - 24-inch Monitor: 8

@@ -1,101 +1,122 @@
-# ERP Procurement & Inventory Management Case Study
+# ERP Satın Alma ve Stok Yönetimi Portföy Projesi
 
-## Project Description
+## Proje Amacı
 
-This repository presents a beginner-friendly ERP portfolio case study for an end-to-end procurement and inventory process. The business process is simulated in Odoo ERP and supported with a separate PostgreSQL reporting database structure built only with SQL files.
+Bu repo, Odoo ERP üzerinde uygulanmış uçtan uca bir satın alma ve stok yönetimi portföy projesidir. Projede tedarikçi, müşteri ve ürün ana verileri oluşturulmuş; satın alma siparişi, mal kabul, satış siparişi, teslimat ve stok hareketi süreçleri tamamlanmıştır.
 
-The project is designed for a future SAP MM / ERP Consultant / Business Analyst career path. It demonstrates how master data, purchase orders, goods receipts, sales orders, deliveries, stock movements, and SQL reports fit together in a typical ERP environment.
+Çalışma, Odoo'da yürütülen ERP sürecini PostgreSQL raporları ve Power BI dashboard veri setleriyle destekler. Amaç, junior SAP MM danışmanı, ERP danışmanı, ERP destek uzmanı veya iş analisti pozisyonları için gösterilebilir, düzenli ve profesyonel bir GitHub portföy çıktısı hazırlamaktır.
 
-Important note: this project does not connect directly to an Odoo database and does not modify any local Odoo installation. The SQL files create a separate reporting structure for learning, documentation, and portfolio purposes.
+> Not: Bu repo doğrudan Odoo veritabanına bağlanmaz ve yerel Odoo kurulumunu değiştirmez. Odoo'da uygulanan iş süreci, ayrıca hazırlanmış PostgreSQL raporlama tabloları ve Power BI chart data dosyalarıyla dokümante edilmiştir.
 
-## Business Scenario
+## İş Senaryosu
 
-NovaTech Office Supplies is a small office equipment company. The company buys products from suppliers, stores them in inventory, and sells them to business customers.
+NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
 
-The company needs to manage:
+Şirketin yönetmesi gereken temel süreçler:
 
-- Vendor master data
-- Customer master data
-- Product master data
-- Purchase orders
-- Goods receipts
-- Customer sales orders
-- Delivery validation
-- Stock increases and decreases
-- Stock movement tracking
-- Critical stock and replenishment analysis
-- SQL-based procurement and inventory reporting
+- Tedarikçi ana verileri
+- Müşteri ana verileri
+- Ürün ana verileri
+- Satın alma siparişleri
+- Mal kabul işlemleri
+- Stok girişleri
+- Satış siparişleri
+- Teslimat doğrulama
+- Stok çıkışları
+- Stok hareket takibi
+- Kritik stok ve yenileme analizi
+- SQL ve Power BI ile raporlama
 
-## Tools Used
+## Kullanılan Araçlar
 
 - Odoo ERP
 - PostgreSQL
 - SQL
 - pgAdmin
+- Power BI
 - GitHub
 - Markdown
-- Mermaid diagrams
+- Mermaid diyagramları
 
-## Implemented ERP Processes
+## Odoo'da Uygulanan Süreçler
 
-The case study covers the following ERP process flow:
+Bu portföy projesinde Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır:
 
-1. Vendor master data creation
-2. Customer master data creation
-3. Product master data creation
-4. Purchase Order creation
-5. Goods Receipt / Product Receipt
-6. Stock increase
-7. Sales Order creation
-8. Delivery validation
-9. Stock decrease
-10. Stock movement tracking
-11. Critical stock / replenishment analysis
-12. SQL-based reporting
+1. Tedarikçi ana verilerinin oluşturulması
+2. Müşteri ana verilerinin oluşturulması
+3. Ürün ana verilerinin oluşturulması
+4. Satın Alma Siparişi oluşturulması
+5. Mal Kabul / Ürün Kabul işlemi
+6. Stok artışının izlenmesi
+7. Satış Siparişi oluşturulması
+8. Teslimat doğrulama
+9. Stok azalışının izlenmesi
+10. Stok hareketlerinin takip edilmesi
+11. Kritik stok ve yenileme analizi
+12. SQL ve Power BI raporlama çıktılarının hazırlanması
 
-## Odoo Process Overview
+## Odoo Süreç Özeti
 
-In Odoo, the procurement and inventory process can be simulated with the Purchase, Inventory, Sales, and Contacts modules.
+Odoo tarafında süreç Contacts, Purchase, Inventory ve Sales modülleriyle yürütülmüştür.
 
-The process starts with creating master data for vendors, customers, and products. Purchase Orders are then created for selected vendors. When ordered goods arrive, the receipt is validated in Inventory, which increases stock levels. Customer Sales Orders are then created and delivered, reducing available stock.
+Önce tedarikçi, müşteri ve ürün ana verileri hazırlanmıştır. Ardından tedarikçiler için satın alma siparişleri oluşturulmuş ve gelen ürünler mal kabul işlemiyle stoğa alınmıştır. Daha sonra müşteri satış siparişi hazırlanmış, teslimat doğrulanmış ve stok çıkışı gerçekleşmiştir.
 
-This workflow demonstrates how operational ERP transactions create inventory movements and how those movements can be analyzed with SQL reports.
+Bu akış, ERP sistemlerinde satın alma ve stok yönetiminin nasıl birbirine bağlandığını gösterir: ana veri, işlem belgesi, stok hareketi ve raporlama aynı iş sürecinin parçalarıdır.
 
-## SQL Reporting Overview
+## PostgreSQL Raporlama
 
-The SQL folder contains a standalone PostgreSQL reporting model. It stores simplified ERP data for vendors, customers, products, purchase orders, sales orders, and stock movements.
+SQL klasörü, Odoo'da uygulanan süreci temsil eden ayrı bir PostgreSQL raporlama modeli içerir. Bu yapı Odoo veritabanına bağlanmadan, portföy ve analiz amacıyla hazırlanmıştır.
 
-The reporting queries include:
+Hazırlanan SQL raporları:
 
-- Current Stock Report
-- Critical Stock Report
-- Vendor Spend Report
-- Top Selling Products Report
-- Stock Movement History Report
-- Purchase Order Status Report
-- Sales Order Status Report
-- Gross Margin by Product
-- Replenishment Suggestion Report
+- Mevcut Stok Raporu
+- Kritik Stok Raporu
+- Tedarikçi Harcama Raporu
+- En Çok Satan Ürünler Raporu
+- Stok Hareket Geçmişi
+- Satın Alma Siparişi Durum Raporu
+- Satış Siparişi Durum Raporu
+- Ürün Bazlı Brüt Kar Marjı
+- Yenileme Önerisi Raporu
 
-The stock reports calculate inventory from stock movement records. Purchase receipts are represented as `PURCHASE_IN`, and customer deliveries are represented as `SALES_OUT`.
+Stok hesapları `stok_hareketleri` tablosu üzerinden yapılır. Mal kabul hareketleri `SATIN_ALMA_GIRIS`, teslimat hareketleri ise `SATIS_CIKIS` olarak tutulur.
 
-## SAP MM Relevance
+## Power BI Dashboard Entegrasyonu
 
-Although the practical simulation is done with Odoo, the process is directly related to SAP MM concepts.
+Power BI klasörü, bu projeyi bir BI portföy çıktısına dönüştürmek için hazırlanmıştır.
 
-| Odoo / Project Area | SAP MM Concept |
+Power BI tarafında hedeflenen dashboard görselleri:
+
+- Ürün bazlı mevcut stok bar chart
+- Kritik stok tablosu
+- Tedarikçi harcama grafiği
+- En çok satan ürünler grafiği
+- Ürün bazlı brüt kar marjı grafiği
+- Yenileme önerileri tablosu
+- Stok hareketleri zaman çizelgesi
+
+Power BI için iki kullanım yöntemi desteklenir:
+
+1. PostgreSQL'e bağlanıp `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak
+2. `powerbi/chart_data/` klasöründeki hazır CSV dosyalarını Power BI'a aktarmak
+
+## SAP MM İlişkisi
+
+Proje Odoo üzerinde uygulanmış olsa da süreç SAP MM kavramlarıyla doğrudan ilişkilidir.
+
+| Odoo / Proje Alanı | SAP MM Karşılığı |
 | --- | --- |
-| Product master data | Material Master |
-| Vendor master data | Vendor Master / Business Partner |
-| Purchase Order | Purchase Order |
-| Goods Receipt | Goods Receipt for Purchase Order |
-| Inventory movement | Stock Movement / Material Document |
-| Minimum and maximum stock | Reorder Point / Replenishment Planning |
-| Procurement reports | Purchasing and Inventory Analytics |
+| Ürün ana verisi | Material Master |
+| Tedarikçi ana verisi | Vendor Master / Business Partner |
+| Satın alma siparişi | Purchase Order |
+| Mal kabul | Goods Receipt |
+| Stok hareketi | Material Document / Stock Movement |
+| Minimum ve maksimum stok | Reorder Point / Replenishment Planning |
+| Satın alma ve stok raporları | Procurement and Inventory Analytics |
 
-This makes the project suitable for a junior SAP MM trainee, junior ERP consultant, ERP support specialist, or business analyst portfolio.
+Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir portföy örneği olarak sunulabilir.
 
-## Repository Structure
+## Repo Yapısı
 
 ```text
 .
@@ -106,53 +127,76 @@ This makes the project suitable for a junior SAP MM trainee, junior ERP consulta
 │   ├── sap_mm_mapping.md
 │   ├── test_cases.md
 │   ├── user_guide.md
-│   └── project_summary.md
+│   ├── project_summary.md
+│   └── portfolio_pitch.md
+├── powerbi/
+│   ├── README.md
+│   └── chart_data/
+│       ├── mevcut_stok.csv
+│       ├── kritik_stok.csv
+│       ├── tedarikci_harcamalari.csv
+│       ├── en_cok_satan_urunler.csv
+│       ├── brut_kar_marji.csv
+│       └── yenileme_onerileri.csv
 ├── sql/
 │   ├── create_tables.sql
 │   ├── insert_sample_data.sql
 │   ├── reports.sql
+│   ├── powerbi_chart_data.sql
 │   └── README.md
 └── screenshots/
     └── README.md
 ```
 
-## How to Use the SQL Files
+## SQL Dosyaları Nasıl Kullanılır?
 
-1. Create a new PostgreSQL database, for example `erp_procurement_inventory`.
-2. Open pgAdmin or another PostgreSQL SQL tool.
-3. Run `sql/create_tables.sql` first.
-4. Run `sql/insert_sample_data.sql` second.
-5. Run individual queries from `sql/reports.sql` to review the reports.
+1. PostgreSQL içinde yeni bir veritabanı oluşturun. Örnek: `erp_satin_alma_stok`.
+2. pgAdmin veya başka bir PostgreSQL aracı açın.
+3. Önce `sql/create_tables.sql` dosyasını çalıştırın.
+4. Sonra `sql/insert_sample_data.sql` dosyasını çalıştırın.
+5. Raporlar için `sql/reports.sql` dosyasındaki sorguları çalıştırın.
+6. Power BI grafikleri için `sql/powerbi_chart_data.sql` dosyasındaki sorguları veya hazır CSV dosyalarını kullanın.
 
-Expected stock after the sample transactions:
+Örnek işlemlerden sonra beklenen stok sonuçları:
 
-| Product | Current Stock |
+| Ürün | Mevcut Stok |
 | --- | ---: |
 | Wireless Mouse | 45 |
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-## Suggested Screenshots to Add
+## Sunum Kanıtları İçin Ekran Görüntüleri
 
-Recommended Odoo screenshots for this portfolio project:
+Portföy sunumunu güçlendirmek için `screenshots/` klasörüne aşağıdaki Odoo ve rapor çıktıları eklenebilir:
 
-- Vendor master data list
-- Customer master data list
-- Product master data list
-- Purchase Order PO-001
-- Goods Receipt / Product Receipt screen
-- Inventory stock on hand
-- Sales Order SO-001
-- Delivery validation screen
-- Stock movement history
-- SQL report outputs from pgAdmin
+- Tedarikçi ana veri ekranı
+- Müşteri ana veri ekranı
+- Ürün ana veri ekranı
+- PO-001 satın alma siparişi
+- PO-001 mal kabul ekranı
+- Odoo stok hareketleri
+- SO-001 satış siparişi
+- SO-001 teslimat doğrulama ekranı
+- PostgreSQL mevcut stok raporu
+- Power BI dashboard ekranı
 
-## Final Portfolio Description
+## Portföy Değeri
 
-This project demonstrates a practical understanding of ERP procurement and inventory processes. It connects business process documentation, Odoo transaction simulation, SAP MM concept mapping, and SQL reporting in one structured GitHub repository.
+Bu proje, ERP süreç anlayışını teknik raporlama becerisiyle birleştirir. Odoo üzerinde uygulanan satın alma ve stok yönetimi süreci, PostgreSQL raporları ve Power BI chart data dosyalarıyla analiz edilebilir hale getirilmiştir.
 
-It is intentionally beginner-friendly while still using professional documentation practices, realistic master data, transaction examples, and report scenarios.
+Proje özellikle şu rollere uygun bir portföy çıktısıdır:
 
-## CV-Ready Project Description
+- Junior SAP MM Consultant
+- Junior ERP Consultant
+- ERP Support Specialist
+- Business Analyst
+- Procurement Analyst
+- Inventory Analyst
 
-"Designed and documented an ERP Procurement & Inventory Management case study using Odoo ERP and PostgreSQL. Created vendor, customer and product master data; processed purchase orders, goods receipts, sales orders and delivery operations; tracked stock movements; and prepared SQL-based inventory and procurement reports. Mapped the process with SAP MM concepts such as Material Master, Vendor Master, Purchase Order, Goods Receipt and Stock Movements."
+## Türkçe CV Açıklaması
+
+Odoo ERP üzerinde satın alma ve stok yönetimi sürecini uçtan uca uyguladım. Tedarikçi, müşteri ve ürün ana verilerini oluşturdum; satın alma siparişleri, mal kabul, satış siparişleri ve teslimat süreçlerini tamamladım. Stok hareketlerini PostgreSQL üzerinde raporladım ve Power BI dashboard tasarımı için grafik veri setleri hazırladım. Süreci SAP MM kavramlarıyla eşleştirerek portföy projesi olarak dokümante ettim.
+
+## Mülakatta Anlatılabilecek Kısa Pitch
+
+Bu projede küçük bir ofis ekipmanları şirketi için Odoo üzerinde satın alma ve stok yönetimi sürecini uçtan uca uyguladım. Tedarikçi, müşteri ve ürün ana verilerini oluşturdum; satın alma siparişlerini mal kabul ile stoğa aldım, satış siparişlerini teslimatla tamamladım ve stok hareketlerini takip ettim. Daha sonra aynı süreci PostgreSQL üzerinde raporlanabilir hale getirdim ve Power BI için grafik veri setleri hazırladım. Projeyi SAP MM kavramlarıyla eşleştirerek ERP danışmanlığı portföyümde sunulabilir bir case study haline getirdim.

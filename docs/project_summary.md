@@ -1,62 +1,65 @@
-# Project Summary
+# Proje Özeti
 
-## Project Name
+## Proje Adı
 
-ERP Procurement & Inventory Management Case Study
+ERP Satın Alma ve Stok Yönetimi Portföy Projesi
 
-## Overview
+## Genel Bakış
 
-This project documents an end-to-end procurement and inventory process for NovaTech Office Supplies, a small office equipment company.
+Bu proje, NovaTech Office Supplies adlı örnek bir ofis ekipmanları şirketi için Odoo ERP üzerinde uygulanmış satın alma ve stok yönetimi çalışmasıdır.
 
-The project combines Odoo ERP process simulation, SAP MM concept mapping, and PostgreSQL SQL reporting. It is designed as a professional beginner-friendly portfolio project for junior ERP, SAP MM, ERP support, and business analyst roles.
+Proje; Odoo süreç uygulaması, SAP MM kavram eşleştirmesi, PostgreSQL raporlaması ve Power BI chart data dosyalarını tek bir GitHub portföy reposunda birleştirir.
 
-## Business Problem
+## İş Problemi
 
-NovaTech Office Supplies needs to manage product purchasing, goods receipts, customer deliveries, and inventory visibility.
+NovaTech Office Supplies, satın alınan ürünlerin stok girişini, müşterilere yapılan teslimatların stok çıkışını ve ürün bazlı mevcut stok durumunu takip etmek istemektedir.
 
-Without a structured ERP process, the company may struggle to answer questions such as:
+Şirketin yanıtlamak istediği temel sorular:
 
-- Which products are currently in stock?
-- Which products are below minimum stock?
-- How much was purchased from each vendor?
-- Which products are selling?
-- What replenishment quantity should be suggested?
+- Hangi ürünlerden stokta kaç adet var?
+- Hangi ürünler minimum stok seviyesinin altında?
+- Hangi tedarikçiye ne kadar harcama yapıldı?
+- Hangi ürünler satıldı?
+- Ürün bazlı brüt kar nedir?
+- Hangi ürünler için yenileme önerisi oluşmalı?
 
-## Solution
+## Uygulanan Çözüm
 
-The project models a simple ERP process:
+Projede aşağıdaki çözüm uygulanmıştır:
 
-1. Create master data.
-2. Purchase products from vendors.
-3. Receive products into inventory.
-4. Sell products to customers.
-5. Validate delivery and reduce stock.
-6. Track inventory movements.
-7. Run SQL reports for business analysis.
+1. Odoo'da tedarikçi, müşteri ve ürün ana verileri oluşturuldu.
+2. Satın alma siparişleri hazırlandı.
+3. Mal kabul işlemleriyle stok girişleri tamamlandı.
+4. Satış siparişi oluşturuldu.
+5. Teslimat doğrulamasıyla stok çıkışı tamamlandı.
+6. Stok hareketleri raporlama modeliyle temsil edildi.
+7. PostgreSQL raporları hazırlandı.
+8. Power BI için chart data dosyaları oluşturuldu.
 
-## Key Learning Outcomes
+## Öğrenim ve Portföy Kazanımları
 
-This project demonstrates:
+Bu proje şu becerileri gösterir:
 
-- ERP master data understanding
-- Procurement process understanding
-- Inventory movement logic
-- Basic SAP MM process mapping
-- SQL reporting skills
-- Business documentation skills
-- GitHub portfolio presentation
+- ERP ana veri mantığı
+- Satın alma süreci bilgisi
+- Mal kabul ve stok hareketi takibi
+- Satış siparişi ve teslimat süreci
+- SAP MM kavramlarıyla süreç eşleştirme
+- PostgreSQL raporlama
+- Power BI dashboard veri hazırlığı
+- İş analizi ve süreç dokümantasyonu
 
-## Final Sample Stock Position
+## Örnek Stok Sonucu
 
-| Product | Current Stock | Minimum Stock | Status |
+| Ürün | Mevcut Stok | Minimum Stok | Durum |
 | --- | ---: | ---: | --- |
-| Wireless Mouse | 45 | 30 | Healthy |
-| Mechanical Keyboard | 27 | 30 | Below minimum |
-| 24-inch Monitor | 8 | 10 | Below minimum |
+| Wireless Mouse | 45 | 30 | Sağlıklı |
+| Mechanical Keyboard | 27 | 30 | Minimum stok altında |
+| 24-inch Monitor | 8 | 10 | Minimum stok altında |
 
-## Career Relevance
+## Kariyer Bağlantısı
 
-This project is relevant for roles such as:
+Bu proje aşağıdaki roller için portföy çıktısı olarak kullanılabilir:
 
 - Junior SAP MM Consultant
 - Junior ERP Consultant
@@ -65,4 +68,4 @@ This project is relevant for roles such as:
 - Procurement Analyst
 - Inventory Analyst
 
-It shows the ability to understand business processes, document ERP workflows, map concepts between systems, and create SQL reports for decision support.
+Proje, iş süreci anlama, ERP uygulama, SQL raporlama ve BI odaklı analiz hazırlama becerilerini birlikte gösterir.

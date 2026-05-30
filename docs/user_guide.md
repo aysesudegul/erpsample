@@ -1,28 +1,27 @@
-# User Guide
+# Kullanıcı Rehberi
 
-## Purpose
+## Amaç
 
-This guide explains how to use the project as a beginner-friendly ERP portfolio case study.
+Bu rehber, Odoo üzerinde uygulanmış ERP satın alma ve stok yönetimi portföy projesinin nasıl takip edileceğini açıklar.
 
-The project has two parts:
+Proje üç ana parçadan oluşur:
 
-1. Odoo ERP process simulation
-2. PostgreSQL SQL reporting model
+1. Odoo ERP iş süreci
+2. PostgreSQL raporlama modeli
+3. Power BI dashboard veri setleri
 
-The Odoo process is documented for learning and screenshots. The SQL model is separate and can be run manually in PostgreSQL or pgAdmin.
+## Kullanılan Odoo Modülleri
 
-## Recommended Odoo Modules
-
-Use the following Odoo modules:
+Odoo tarafında aşağıdaki modüller kullanılmıştır:
 
 - Contacts
 - Purchase
 - Inventory
 - Sales
 
-## Step 1: Create Vendor Master Data
+## 1. Tedarikçi Ana Verileri
 
-Create the following vendors in Odoo Contacts:
+Odoo Contacts içinde aşağıdaki tedarikçiler oluşturulmuştur:
 
 - Anadolu Electronics
 - OfficePro Supply
@@ -30,13 +29,13 @@ Create the following vendors in Odoo Contacts:
 - Global Office Supplier
 - Akdeniz Computer Systems
 
-Recommended screenshot:
+Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
 
-- Vendor list or individual vendor form
+- Tedarikçi liste ekranı veya tedarikçi formu
 
-## Step 2: Create Customer Master Data
+## 2. Müşteri Ana Verileri
 
-Create the following customers in Odoo Contacts:
+Odoo Contacts içinde aşağıdaki müşteriler oluşturulmuştur:
 
 - ABC Consulting
 - Mavi Software
@@ -44,15 +43,15 @@ Create the following customers in Odoo Contacts:
 - Northwind Logistics
 - Bright Future Education
 
-Recommended screenshot:
+Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
 
-- Customer list or individual customer form
+- Müşteri liste ekranı veya müşteri formu
 
-## Step 3: Create Product Master Data
+## 3. Ürün Ana Verileri
 
-Create the following products:
+Odoo'da aşağıdaki ürünler maliyet ve satış fiyatı bilgileriyle oluşturulmuştur:
 
-| Product | Cost | Sales Price | Minimum Stock | Maximum Stock |
+| Ürün | Maliyet | Satış Fiyatı | Minimum Stok | Maksimum Stok |
 | --- | ---: | ---: | ---: | ---: |
 | Wireless Mouse | 150 | 250 | 30 | 60 |
 | Mechanical Keyboard | 300 | 500 | 30 | 50 |
@@ -63,85 +62,96 @@ Create the following products:
 | Office Chair | 1200 | 2200 | 10 | 25 |
 | Barcode Scanner | 2500 | 3900 | 5 | 15 |
 
-Recommended screenshot:
+Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
 
-- Product list or product form showing sales price and cost
+- Ürün listesi veya ürün formu
 
-## Step 4: Create Purchase Order PO-001
+## 4. PO-001 Satın Alma Siparişi
 
-Create a Purchase Order for:
+PO-001 aşağıdaki bilgilerle oluşturulmuştur:
 
-- Vendor: Anadolu Electronics
-- Wireless Mouse: 30 units at 150
-- Mechanical Keyboard: 20 units at 300
-- 24-inch Monitor: 10 units at 3000
+- Tedarikçi: Anadolu Electronics
+- Wireless Mouse: 30 adet, birim maliyet 150
+- Mechanical Keyboard: 20 adet, birim maliyet 300
+- 24-inch Monitor: 10 adet, birim maliyet 3000
 
-Confirm the Purchase Order and validate the receipt.
+Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
 
-Recommended screenshots:
+Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
 
-- Purchase Order PO-001
-- Receipt validation screen
+- PO-001 satın alma siparişi
+- PO-001 mal kabul ekranı
 
-## Step 5: Create Sales Order SO-001
+## 5. SO-001 Satış Siparişi
 
-Create a Sales Order for:
+SO-001 aşağıdaki bilgilerle oluşturulmuştur:
 
-- Customer: ABC Consulting
-- Wireless Mouse: 5 units at 250
-- Mechanical Keyboard: 3 units at 500
-- 24-inch Monitor: 2 units at 4500
+- Müşteri: ABC Consulting
+- Wireless Mouse: 5 adet, birim fiyat 250
+- Mechanical Keyboard: 3 adet, birim fiyat 500
+- 24-inch Monitor: 2 adet, birim fiyat 4500
 
-Confirm the Sales Order and validate delivery.
+Sipariş onaylanmış ve teslimat doğrulanmıştır.
 
-Recommended screenshots:
+Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
 
-- Sales Order SO-001
-- Delivery validation screen
+- SO-001 satış siparişi
+- SO-001 teslimat doğrulama ekranı
 
-## Step 6: Create Purchase Order PO-002
+## 6. PO-002 Satın Alma Siparişi
 
-Create a Purchase Order for:
+PO-002 aşağıdaki bilgilerle oluşturulmuştur:
 
-- Vendor: OfficePro Supply
-- Wireless Mouse: 20 units at 150
-- Mechanical Keyboard: 10 units at 300
+- Tedarikçi: OfficePro Supply
+- Wireless Mouse: 20 adet, birim maliyet 150
+- Mechanical Keyboard: 10 adet, birim maliyet 300
 
-Confirm the Purchase Order and validate the receipt.
+Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
 
-Recommended screenshot:
+Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
 
-- Purchase Order PO-002
+- PO-002 satın alma siparişi
 
-## Step 7: Review Stock
+## 7. Stok Sonucu
 
-After the sample transactions, expected stock is:
+Örnek işlemler sonrası beklenen mevcut stok:
 
-| Product | Current Stock |
+| Ürün | Mevcut Stok |
 | --- | ---: |
 | Wireless Mouse | 45 |
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-Recommended screenshots:
+Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
 
-- Inventory on hand
-- Stock movements
+- Odoo stok miktarı
+- Odoo stok hareketleri
+- PostgreSQL mevcut stok raporu
 
-## Step 8: Run SQL Reports
+## 8. PostgreSQL Raporlarını Çalıştırma
 
-Open pgAdmin or another PostgreSQL tool and run the SQL files in this order:
+pgAdmin veya başka bir PostgreSQL aracında dosyaları şu sırayla çalıştırın:
 
 1. `sql/create_tables.sql`
 2. `sql/insert_sample_data.sql`
-3. Queries from `sql/reports.sql`
+3. `sql/reports.sql`
 
-Recommended screenshots:
+Bu raporlar mevcut stok, kritik stok, tedarikçi harcaması, satış performansı, brüt kar ve yenileme önerilerini gösterir.
 
-- Current Stock Report output
-- Critical Stock Report output
-- Replenishment Suggestion Report output
+## 9. Power BI Dashboard Hazırlama
 
-## Portfolio Tip
+Power BI için iki seçenek vardır:
 
-When adding screenshots to GitHub, place them in the `screenshots/` folder and link them from the main `README.md` or from the related documentation page.
+1. PostgreSQL bağlantısı kurup `sql/powerbi_chart_data.sql` sorgularını kullanmak
+2. `powerbi/chart_data/` klasöründeki CSV dosyalarını içe aktarmak
+
+Önerilen Power BI sayfaları:
+
+- Stok Özeti
+- Satın Alma Analizi
+- Satış ve Karlılık
+- Yenileme Önerileri
+
+## Portföy Sunum İpucu
+
+Projeyi anlatırken önce iş problemini, sonra Odoo'da uygulanan süreci, ardından SQL raporlarını ve Power BI dashboard verilerini gösterin. Son bölümde süreci SAP MM kavramlarıyla ilişkilendirerek ERP danışmanlığına uygunluğunu vurgulayın.

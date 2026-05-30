@@ -1,31 +1,32 @@
-# Process Flow
+# Odoo Süreç Akışı
 
-## End-to-End ERP Flow
+## Uçtan Uca ERP Akışı
 
-This case study follows a typical procurement-to-inventory-to-sales process.
+Bu proje, Odoo üzerinde uygulanan satın alma, mal kabul, satış, teslimat ve stok hareketleri sürecini gösterir.
 
 ```mermaid
 flowchart TD
-    A["Create Vendor Master Data"] --> B["Create Customer Master Data"]
-    B --> C["Create Product Master Data"]
-    C --> D["Create Purchase Order"]
-    D --> E["Receive Products / Goods Receipt"]
-    E --> F["Stock Increases"]
-    F --> G["Create Sales Order"]
-    G --> H["Validate Delivery"]
-    H --> I["Stock Decreases"]
-    I --> J["Track Stock Movements"]
-    J --> K["Run SQL Reports"]
-    K --> L["Analyze Critical Stock and Replenishment"]
+    A["Tedarikçi Ana Verisi Oluşturma"] --> B["Müşteri Ana Verisi Oluşturma"]
+    B --> C["Ürün Ana Verisi Oluşturma"]
+    C --> D["Satın Alma Siparişi Oluşturma"]
+    D --> E["Mal Kabul / Ürün Kabul"]
+    E --> F["Stok Artışı"]
+    F --> G["Satış Siparişi Oluşturma"]
+    G --> H["Teslimat Doğrulama"]
+    H --> I["Stok Azalışı"]
+    I --> J["Stok Hareketlerini Takip Etme"]
+    J --> K["PostgreSQL Raporları"]
+    K --> L["Power BI Dashboard Verileri"]
+    L --> M["Kritik Stok ve Yenileme Analizi"]
 ```
 
-## Process Step Details
+## Süreç Adımları
 
-### 1. Vendor Master Data
+### 1. Tedarikçi Ana Verisi
 
-Vendors are created to represent companies that supply products to NovaTech Office Supplies.
+Odoo Contacts modülünde tedarikçi kayıtları oluşturulmuştur.
 
-Example vendors:
+Örnek tedarikçiler:
 
 - Anadolu Electronics
 - OfficePro Supply
@@ -33,11 +34,11 @@ Example vendors:
 - Global Office Supplier
 - Akdeniz Computer Systems
 
-### 2. Customer Master Data
+### 2. Müşteri Ana Verisi
 
-Customers are created to represent business partners that buy products.
+Odoo Contacts modülünde müşteri kayıtları oluşturulmuştur.
 
-Example customers:
+Örnek müşteriler:
 
 - ABC Consulting
 - Mavi Software
@@ -45,71 +46,71 @@ Example customers:
 - Northwind Logistics
 - Bright Future Education
 
-### 3. Product Master Data
+### 3. Ürün Ana Verisi
 
-Products are created with cost, sales price, minimum stock, and maximum stock values.
+Odoo'da ürünler maliyet, satış fiyatı ve stok takip bilgileriyle hazırlanmıştır.
 
-These values support purchasing, sales, inventory tracking, and replenishment reporting.
+Bu bilgiler satın alma, satış, stok kontrolü ve yenileme analizi için temel veri olarak kullanılır.
 
-### 4. Purchase Order Creation
+### 4. Satın Alma Siparişi
 
-Purchase Orders are created when products need to be ordered from vendors.
+Tedarikçilerden ürün almak için satın alma siparişleri oluşturulmuştur.
 
-Example:
+Örnek:
 
-- PO-001 is created for Anadolu Electronics.
-- PO-002 is created for OfficePro Supply.
+- PO-001: Anadolu Electronics
+- PO-002: OfficePro Supply
 
-### 5. Goods Receipt
+### 5. Mal Kabul
 
-When purchased products arrive, the receipt is validated.
+Satın alınan ürünler geldiğinde Odoo Inventory tarafında mal kabul işlemi yapılmıştır.
 
-This creates a stock movement with movement type `PURCHASE_IN`.
+Bu işlem stok hareketlerinde `SATIN_ALMA_GIRIS` olarak temsil edilir.
 
-### 6. Stock Increase
+### 6. Stok Artışı
 
-After the Goods Receipt, product stock increases.
+Mal kabul sonrası ürünlerin stok miktarı artar.
 
-Example:
+Örnek:
 
-- Receiving 30 Wireless Mouse units increases stock by 30.
+- 30 adet Wireless Mouse mal kabulü, Wireless Mouse stok miktarını 30 artırır.
 
-### 7. Sales Order Creation
+### 7. Satış Siparişi
 
-Sales Orders are created when customers order products.
+Müşteri talebi için Odoo Sales modülünde satış siparişi oluşturulmuştur.
 
-Example:
+Örnek:
 
-- SO-001 is created for ABC Consulting.
+- SO-001: ABC Consulting
 
-### 8. Delivery Validation
+### 8. Teslimat Doğrulama
 
-When the customer order is shipped, the delivery is validated.
+Satış siparişi teslim edildiğinde Odoo Inventory tarafında teslimat doğrulanır.
 
-This creates a stock movement with movement type `SALES_OUT`.
+Bu işlem stok hareketlerinde `SATIS_CIKIS` olarak temsil edilir.
 
-### 9. Stock Decrease
+### 9. Stok Azalışı
 
-After delivery, stock decreases.
+Teslimat sonrası ilgili ürünlerin stok miktarı azalır.
 
-Example:
+Örnek:
 
-- Delivering 5 Wireless Mouse units decreases stock by 5.
+- 5 adet Wireless Mouse teslimatı, Wireless Mouse stok miktarını 5 azaltır.
 
-### 10. Stock Movement Tracking
+### 10. Stok Hareket Takibi
 
-Every receipt and delivery is tracked as a stock movement.
+Her mal kabul ve teslimat işlemi stok hareketi olarak takip edilir.
 
-This allows the business to review stock history by product, date, movement type, and document reference.
+Bu takip, ürün bazında stok geçmişini, belge referanslarını ve hareket türlerini analiz etmeyi sağlar.
 
-### 11. Critical Stock Analysis
+### 11. PostgreSQL Raporlama
 
-Current stock is compared with minimum stock.
+Odoo'da uygulanan süreç ayrı bir PostgreSQL raporlama modeliyle temsil edilmiştir.
 
-Products below minimum stock are flagged for review.
+Bu model üzerinden mevcut stok, kritik stok, tedarikçi harcaması, satış performansı ve brüt kar gibi raporlar hazırlanmıştır.
 
-### 12. SQL-Based Reporting
+### 12. Power BI Analizi
 
-SQL reports provide operational visibility for procurement and inventory management.
+Power BI için hazır CSV dosyaları ve SQL sorguları eklenmiştir.
 
-Reports include current stock, critical stock, vendor spend, sales performance, gross margin, and replenishment suggestions.
+Bu verilerle ürün bazlı stok, kritik stok, tedarikçi harcaması, satış performansı ve yenileme önerileri görselleştirilebilir.

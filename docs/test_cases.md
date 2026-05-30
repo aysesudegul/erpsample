@@ -1,101 +1,101 @@
-# Test Cases
+# Test Senaryoları
 
-## Test Case 1: Create Vendor Master Data
+## Test Senaryosu 1: Tedarikçi Ana Verisi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify that vendor records can be created and used in Purchase Orders. |
-| Test Data | Anadolu Electronics, OfficePro Supply |
-| Steps | Create vendor master records. |
-| Expected Result | Vendors are available for Purchase Order creation. |
-| Status | Passed in case study design |
+| Test Amacı | Tedarikçi kayıtlarının oluşturulabildiğini ve satın alma siparişlerinde kullanılabildiğini doğrulamak. |
+| Test Verisi | Anadolu Electronics, OfficePro Supply |
+| Adımlar | Odoo Contacts içinde tedarikçi kayıtlarını oluştur. |
+| Beklenen Sonuç | Tedarikçiler satın alma siparişi ekranında seçilebilir. |
+| Durum | Portföy senaryosunda tamamlandı |
 
-## Test Case 2: Create Customer Master Data
+## Test Senaryosu 2: Müşteri Ana Verisi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify that customer records can be created and used in Sales Orders. |
-| Test Data | ABC Consulting |
-| Steps | Create customer master record. |
-| Expected Result | Customer is available for Sales Order creation. |
-| Status | Passed in case study design |
+| Test Amacı | Müşteri kayıtlarının oluşturulabildiğini ve satış siparişlerinde kullanılabildiğini doğrulamak. |
+| Test Verisi | ABC Consulting |
+| Adımlar | Odoo Contacts içinde müşteri kaydını oluştur. |
+| Beklenen Sonuç | Müşteri satış siparişi ekranında seçilebilir. |
+| Durum | Portföy senaryosunda tamamlandı |
 
-## Test Case 3: Create Product Master Data
+## Test Senaryosu 3: Ürün Ana Verisi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify that products contain cost, sales price, minimum stock, and maximum stock. |
-| Test Data | Wireless Mouse, Mechanical Keyboard, 24-inch Monitor |
-| Steps | Create product master records. |
-| Expected Result | Products are available for purchasing, sales, and reporting. |
-| Status | Passed in case study design |
+| Test Amacı | Ürünlerin maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileriyle hazırlanmasını doğrulamak. |
+| Test Verisi | Wireless Mouse, Mechanical Keyboard, 24-inch Monitor |
+| Adımlar | Odoo Products ekranında ürün ana verilerini oluştur. |
+| Beklenen Sonuç | Ürünler satın alma, satış ve stok işlemlerinde kullanılabilir. |
+| Durum | Portföy senaryosunda tamamlandı |
 
-## Test Case 4: Process Purchase Order PO-001
+## Test Senaryosu 4: PO-001 Satın Alma Siparişi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify that a Purchase Order can be created and received. |
-| Test Data | PO-001 for Anadolu Electronics |
-| Steps | Create PO-001, add product lines, validate receipt. |
-| Expected Result | Stock increases for Wireless Mouse, Mechanical Keyboard, and 24-inch Monitor. |
-| Status | Passed in sample data |
+| Test Amacı | Satın alma siparişinin oluşturulup mal kabul ile stoğa alınmasını doğrulamak. |
+| Test Verisi | PO-001, Anadolu Electronics |
+| Adımlar | PO-001 oluştur, ürün kalemlerini ekle, siparişi onayla, mal kabul işlemini doğrula. |
+| Beklenen Sonuç | Wireless Mouse, Mechanical Keyboard ve 24-inch Monitor stokları artar. |
+| Durum | Örnek veriyle doğrulandı |
 
-## Test Case 5: Process Sales Order SO-001
+## Test Senaryosu 5: SO-001 Satış Siparişi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify that a Sales Order can be delivered and stock decreases. |
-| Test Data | SO-001 for ABC Consulting |
-| Steps | Create SO-001, add product lines, validate delivery. |
-| Expected Result | Stock decreases for delivered products. |
-| Status | Passed in sample data |
+| Test Amacı | Satış siparişinin teslimatla tamamlanmasını ve stok çıkışını doğrulamak. |
+| Test Verisi | SO-001, ABC Consulting |
+| Adımlar | SO-001 oluştur, ürün kalemlerini ekle, siparişi onayla, teslimatı doğrula. |
+| Beklenen Sonuç | Teslim edilen ürünlerin stokları azalır. |
+| Durum | Örnek veriyle doğrulandı |
 
-## Test Case 6: Verify Current Stock
+## Test Senaryosu 6: Mevcut Stok Raporu
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify current stock after purchase and sales transactions. |
-| Test Data | PO-001, PO-002, SO-001 |
-| Steps | Run Current Stock Report from `sql/reports.sql`. |
-| Expected Result | Wireless Mouse = 45, Mechanical Keyboard = 27, 24-inch Monitor = 8. |
-| Status | Passed by expected calculation |
+| Test Amacı | Satın alma ve satış işlemleri sonrası mevcut stokların doğru hesaplandığını doğrulamak. |
+| Test Verisi | PO-001, PO-002, SO-001 |
+| Adımlar | `sql/reports.sql` içindeki Mevcut Stok Raporu sorgusunu çalıştır. |
+| Beklenen Sonuç | Wireless Mouse = 45, Mechanical Keyboard = 27, 24-inch Monitor = 8. |
+| Durum | Hesaplama ile doğrulandı |
 
-## Test Case 7: Identify Critical Stock
+## Test Senaryosu 7: Kritik Stok Raporu
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify products below minimum stock are flagged. |
-| Test Data | Mechanical Keyboard, 24-inch Monitor |
-| Steps | Run Critical Stock Report from `sql/reports.sql`. |
-| Expected Result | Products with current stock below minimum stock are displayed. |
-| Status | Passed by report design |
+| Test Amacı | Minimum stok altındaki ürünlerin listelendiğini doğrulamak. |
+| Test Verisi | Mechanical Keyboard, 24-inch Monitor |
+| Adımlar | `sql/reports.sql` içindeki Kritik Stok Raporu sorgusunu çalıştır. |
+| Beklenen Sonuç | Minimum stok altındaki ürünler raporda görünür. |
+| Durum | Rapor tasarımıyla doğrulandı |
 
-## Test Case 8: Generate Replenishment Suggestions
+## Test Senaryosu 8: Yenileme Önerisi
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify suggested purchase quantities are calculated correctly. |
-| Test Data | Product minimum and maximum stock values |
-| Steps | Run Replenishment Suggestion Report from `sql/reports.sql`. |
-| Expected Result | If current stock is below minimum stock, suggested quantity equals maximum stock minus current stock. |
-| Status | Passed by report design |
+| Test Amacı | Önerilen satın alma miktarının doğru hesaplandığını doğrulamak. |
+| Test Verisi | Ürün minimum ve maksimum stok değerleri |
+| Adımlar | Yenileme Önerisi Raporu sorgusunu çalıştır. |
+| Beklenen Sonuç | Mevcut stok minimum stokun altındaysa önerilen miktar maksimum stok eksi mevcut stok olur. |
+| Durum | Rapor tasarımıyla doğrulandı |
 
-## Test Case 9: Review Vendor Spend
+## Test Senaryosu 9: Power BI Chart Data
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify total purchasing value by vendor. |
-| Test Data | PO-001, PO-002 |
-| Steps | Run Vendor Spend Report from `sql/reports.sql`. |
-| Expected Result | Vendor spend is calculated from Purchase Order item quantities and unit costs. |
-| Status | Passed by report design |
+| Test Amacı | CSV chart data dosyalarının SQL örnek verileriyle uyumlu olduğunu doğrulamak. |
+| Test Verisi | `powerbi/chart_data/` dosyaları |
+| Adımlar | CSV dosyalarını Power BI'a aktar ve temel grafiklere bağla. |
+| Beklenen Sonuç | Dashboard görselleri mevcut stok, kritik stok, satış ve yenileme verilerini gösterir. |
+| Durum | Veri seti hazırlandı |
 
-## Test Case 10: Review Gross Margin by Product
+## Test Senaryosu 10: SAP MM Eşleştirme
 
-| Field | Value |
+| Alan | Değer |
 | --- | --- |
-| Test Objective | Verify sales revenue, estimated cost, and gross margin by product. |
-| Test Data | SO-001 |
-| Steps | Run Gross Margin by Product report from `sql/reports.sql`. |
-| Expected Result | Gross margin equals sales revenue minus estimated cost. |
-| Status | Passed by report design |
+| Test Amacı | Odoo'da uygulanan sürecin SAP MM kavramlarıyla açıklanabildiğini doğrulamak. |
+| Test Verisi | Satın alma siparişi, mal kabul, stok hareketleri |
+| Adımlar | `docs/sap_mm_mapping.md` dokümanını incele. |
+| Beklenen Sonuç | Süreç Material Master, Vendor Master, Purchase Order, Goods Receipt ve Stock Movement kavramlarıyla eşleşir. |
+| Durum | Dokümantasyonla doğrulandı |

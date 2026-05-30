@@ -1,38 +1,50 @@
-# Screenshots
+# Sunum Kanıtları ve Ekran Görüntüleri
 
-Add Odoo and SQL screenshots in this folder to strengthen the GitHub portfolio presentation.
+Bu klasör, Odoo ve raporlama ekran görüntülerini eklemek için hazırlanmıştır. Ekran görüntüleri projeyi GitHub'da ve mülakatta daha güçlü göstermek için kullanılabilir.
 
-## Suggested Odoo Screenshots
+Gerçek ekran görüntüsü yoksa dosya uydurulmamalıdır. Sadece Odoo veya raporlama aracından alınan gerçek görüntüler eklenmelidir.
 
-- Vendor master data list
-- Customer master data list
-- Product master data list
-- Purchase Order PO-001
-- Goods Receipt / Product Receipt for PO-001
-- Inventory stock on hand
-- Sales Order SO-001
-- Delivery validation for SO-001
-- Stock movement history
+## Odoo Ekran Görüntüleri
 
-## Suggested SQL Screenshots
+Eklenmesi önerilen Odoo kanıtları:
 
-- Current Stock Report
-- Critical Stock Report
-- Vendor Spend Report
-- Top Selling Products Report
-- Replenishment Suggestion Report
+- Tedarikçi ana veri listesi
+- Müşteri ana veri listesi
+- Ürün ana veri listesi
+- PO-001 satın alma siparişi
+- PO-001 mal kabul ekranı
+- PO-002 satın alma siparişi
+- SO-001 satış siparişi
+- SO-001 teslimat doğrulama ekranı
+- Odoo stok miktarı ekranı
+- Odoo stok hareket geçmişi
 
-## Naming Recommendation
+## PostgreSQL ve Power BI Ekran Görüntüleri
 
-Use clear file names, for example:
+Eklenmesi önerilen raporlama kanıtları:
+
+- PostgreSQL Mevcut Stok Raporu
+- PostgreSQL Kritik Stok Raporu
+- PostgreSQL Tedarikçi Harcama Raporu
+- PostgreSQL Yenileme Önerisi Raporu
+- Power BI dashboard ana ekranı
+- Power BI stok analizi ekranı
+- Power BI satış ve karlılık ekranı
+
+## Dosya Adlandırma Önerisi
+
+Dosya adlarını küçük harf ve tire ile yazmak GitHub'da okunabilirliği artırır.
 
 ```text
-vendor-master-data.png
-purchase-order-po-001.png
-goods-receipt-po-001.png
-sales-order-so-001.png
-current-stock-report.png
-critical-stock-report.png
+tedarikci-ana-veri.png
+musteri-ana-veri.png
+urun-ana-veri.png
+po-001-satin-alma-siparisi.png
+po-001-mal-kabul.png
+so-001-satis-siparisi.png
+so-001-teslimat.png
+postgresql-mevcut-stok-raporu.png
+powerbi-dashboard.png
 ```
 
-After adding screenshots, link the most important images from the main `README.md`.
+En güçlü 3 veya 4 ekran görüntüsü ana README içinden linklenebilir.

@@ -1,159 +1,159 @@
--- ERP Procurement & Inventory Management Case Study
--- PostgreSQL reporting queries
+-- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- PostgreSQL raporlama sorguları
 
--- 1. Current Stock Report
+-- 1. Mevcut Stok Raporu
 SELECT
-    p.product_name,
-    p.min_stock,
-    p.max_stock,
+    u.urun_adi AS "Ürün",
+    u.minimum_stok AS "Minimum Stok",
+    u.maksimum_stok AS "Maksimum Stok",
     COALESCE(SUM(
         CASE
-            WHEN sm.movement_type = 'PURCHASE_IN' THEN sm.quantity
-            WHEN sm.movement_type = 'SALES_OUT' THEN -sm.quantity
+            WHEN sh.hareket_tipi = 'SATIN_ALMA_GIRIS' THEN sh.miktar
+            WHEN sh.hareket_tipi = 'SATIS_CIKIS' THEN -sh.miktar
             ELSE 0
         END
-    ), 0) AS current_stock
-FROM products p
-LEFT JOIN stock_movements sm ON sm.product_id = p.product_id
-GROUP BY p.product_id, p.product_name, p.min_stock, p.max_stock
-ORDER BY p.product_name;
+    ), 0) AS "Mevcut Stok"
+FROM urunler u
+LEFT JOIN stok_hareketleri sh ON sh.urun_id = u.urun_id
+GROUP BY u.urun_id, u.urun_adi, u.minimum_stok, u.maksimum_stok
+ORDER BY u.urun_adi;
 
--- 2. Critical Stock Report
-WITH current_stock AS (
+-- 2. Kritik Stok Raporu
+WITH mevcut_stok AS (
     SELECT
-        p.product_id,
-        p.product_name,
-        p.min_stock,
-        p.max_stock,
+        u.urun_id,
+        u.urun_adi,
+        u.minimum_stok,
+        u.maksimum_stok,
         COALESCE(SUM(
             CASE
-                WHEN sm.movement_type = 'PURCHASE_IN' THEN sm.quantity
-                WHEN sm.movement_type = 'SALES_OUT' THEN -sm.quantity
+                WHEN sh.hareket_tipi = 'SATIN_ALMA_GIRIS' THEN sh.miktar
+                WHEN sh.hareket_tipi = 'SATIS_CIKIS' THEN -sh.miktar
                 ELSE 0
             END
-        ), 0) AS current_stock
-    FROM products p
-    LEFT JOIN stock_movements sm ON sm.product_id = p.product_id
-    GROUP BY p.product_id, p.product_name, p.min_stock, p.max_stock
+        ), 0) AS mevcut_stok
+    FROM urunler u
+    LEFT JOIN stok_hareketleri sh ON sh.urun_id = u.urun_id
+    GROUP BY u.urun_id, u.urun_adi, u.minimum_stok, u.maksimum_stok
 )
 SELECT
-    product_name,
-    current_stock,
-    min_stock,
-    max_stock,
-    min_stock - current_stock AS shortage_quantity
-FROM current_stock
-WHERE current_stock < min_stock
-ORDER BY shortage_quantity DESC, product_name;
+    urun_adi AS "Ürün",
+    mevcut_stok AS "Mevcut Stok",
+    minimum_stok AS "Minimum Stok",
+    maksimum_stok AS "Maksimum Stok",
+    minimum_stok - mevcut_stok AS "Eksik Miktar"
+FROM mevcut_stok
+WHERE mevcut_stok < minimum_stok
+ORDER BY "Eksik Miktar" DESC, "Ürün";
 
--- 3. Vendor Spend Report
+-- 3. Tedarikçi Harcama Raporu
 SELECT
-    v.vendor_name,
-    COUNT(DISTINCT po.purchase_order_id) AS purchase_order_count,
-    SUM(poi.quantity) AS total_units_purchased,
-    SUM(poi.quantity * poi.unit_cost) AS total_spend
-FROM vendors v
-JOIN purchase_orders po ON po.vendor_id = v.vendor_id
-JOIN purchase_order_items poi ON poi.purchase_order_id = po.purchase_order_id
-GROUP BY v.vendor_id, v.vendor_name
-ORDER BY total_spend DESC;
+    t.tedarikci_adi AS "Tedarikçi",
+    COUNT(DISTINCT sas.satin_alma_siparisi_id) AS "Satın Alma Siparişi Sayısı",
+    SUM(sask.miktar) AS "Toplam Satın Alınan Miktar",
+    SUM(sask.miktar * sask.birim_maliyet) AS "Toplam Harcama"
+FROM tedarikciler t
+JOIN satin_alma_siparisleri sas ON sas.tedarikci_id = t.tedarikci_id
+JOIN satin_alma_siparisi_kalemleri sask ON sask.satin_alma_siparisi_id = sas.satin_alma_siparisi_id
+GROUP BY t.tedarikci_id, t.tedarikci_adi
+ORDER BY "Toplam Harcama" DESC;
 
--- 4. Top Selling Products Report
+-- 4. En Çok Satan Ürünler Raporu
 SELECT
-    p.product_name,
-    SUM(soi.quantity) AS total_units_sold,
-    SUM(soi.quantity * soi.unit_price) AS total_sales_revenue
-FROM products p
-JOIN sales_order_items soi ON soi.product_id = p.product_id
-JOIN sales_orders so ON so.sales_order_id = soi.sales_order_id
-WHERE so.status = 'Delivered'
-GROUP BY p.product_id, p.product_name
-ORDER BY total_units_sold DESC, total_sales_revenue DESC;
+    u.urun_adi AS "Ürün",
+    SUM(ssk.miktar) AS "Satılan Miktar",
+    SUM(ssk.miktar * ssk.birim_fiyat) AS "Satış Geliri"
+FROM urunler u
+JOIN satis_siparisi_kalemleri ssk ON ssk.urun_id = u.urun_id
+JOIN satis_siparisleri ss ON ss.satis_siparisi_id = ssk.satis_siparisi_id
+WHERE ss.durum = 'Teslim Edildi'
+GROUP BY u.urun_id, u.urun_adi
+ORDER BY "Satılan Miktar" DESC, "Satış Geliri" DESC;
 
--- 5. Stock Movement History Report
+-- 5. Stok Hareket Geçmişi
 SELECT
-    sm.movement_date,
-    p.product_name,
-    sm.movement_type,
+    sh.hareket_tarihi AS "Hareket Tarihi",
+    u.urun_adi AS "Ürün",
+    sh.hareket_tipi AS "Hareket Tipi",
     CASE
-        WHEN sm.movement_type = 'PURCHASE_IN' THEN sm.quantity
-        WHEN sm.movement_type = 'SALES_OUT' THEN -sm.quantity
-        ELSE sm.quantity
-    END AS signed_quantity,
-    sm.quantity AS movement_quantity,
-    sm.reference_document,
-    sm.notes
-FROM stock_movements sm
-JOIN products p ON p.product_id = sm.product_id
-ORDER BY sm.movement_date, sm.stock_movement_id;
+        WHEN sh.hareket_tipi = 'SATIN_ALMA_GIRIS' THEN sh.miktar
+        WHEN sh.hareket_tipi = 'SATIS_CIKIS' THEN -sh.miktar
+        ELSE sh.miktar
+    END AS "İşaretli Miktar",
+    sh.miktar AS "Hareket Miktarı",
+    sh.referans_belge AS "Referans Belge",
+    sh.aciklama AS "Açıklama"
+FROM stok_hareketleri sh
+JOIN urunler u ON u.urun_id = sh.urun_id
+ORDER BY sh.hareket_tarihi, sh.stok_hareketi_id;
 
--- 6. Purchase Order Status Report
+-- 6. Satın Alma Siparişi Durum Raporu
 SELECT
-    po.status,
-    COUNT(*) AS purchase_order_count,
-    SUM(poi.quantity * poi.unit_cost) AS total_order_value
-FROM purchase_orders po
-JOIN purchase_order_items poi ON poi.purchase_order_id = po.purchase_order_id
-GROUP BY po.status
-ORDER BY po.status;
+    sas.durum AS "Durum",
+    COUNT(*) AS "Satın Alma Siparişi Sayısı",
+    SUM(sask.miktar * sask.birim_maliyet) AS "Toplam Sipariş Değeri"
+FROM satin_alma_siparisleri sas
+JOIN satin_alma_siparisi_kalemleri sask ON sask.satin_alma_siparisi_id = sas.satin_alma_siparisi_id
+GROUP BY sas.durum
+ORDER BY sas.durum;
 
--- 7. Sales Order Status Report
+-- 7. Satış Siparişi Durum Raporu
 SELECT
-    so.status,
-    COUNT(*) AS sales_order_count,
-    SUM(soi.quantity * soi.unit_price) AS total_sales_value
-FROM sales_orders so
-JOIN sales_order_items soi ON soi.sales_order_id = so.sales_order_id
-GROUP BY so.status
-ORDER BY so.status;
+    ss.durum AS "Durum",
+    COUNT(*) AS "Satış Siparişi Sayısı",
+    SUM(ssk.miktar * ssk.birim_fiyat) AS "Toplam Satış Değeri"
+FROM satis_siparisleri ss
+JOIN satis_siparisi_kalemleri ssk ON ssk.satis_siparisi_id = ss.satis_siparisi_id
+GROUP BY ss.durum
+ORDER BY ss.durum;
 
--- 8. Gross Margin by Product
+-- 8. Ürün Bazlı Brüt Kar Marjı
 SELECT
-    p.product_name,
-    SUM(soi.quantity) AS units_sold,
-    SUM(soi.quantity * soi.unit_price) AS sales_revenue,
-    SUM(soi.quantity * p.cost) AS estimated_cost,
-    SUM(soi.quantity * soi.unit_price) - SUM(soi.quantity * p.cost) AS gross_margin,
+    u.urun_adi AS "Ürün",
+    SUM(ssk.miktar) AS "Satılan Miktar",
+    SUM(ssk.miktar * ssk.birim_fiyat) AS "Satış Geliri",
+    SUM(ssk.miktar * u.maliyet) AS "Tahmini Maliyet",
+    SUM(ssk.miktar * ssk.birim_fiyat) - SUM(ssk.miktar * u.maliyet) AS "Brüt Kar",
     ROUND(
         (
-            (SUM(soi.quantity * soi.unit_price) - SUM(soi.quantity * p.cost))
-            / NULLIF(SUM(soi.quantity * soi.unit_price), 0)
+            (SUM(ssk.miktar * ssk.birim_fiyat) - SUM(ssk.miktar * u.maliyet))
+            / NULLIF(SUM(ssk.miktar * ssk.birim_fiyat), 0)
         ) * 100,
         2
-    ) AS gross_margin_percent
-FROM products p
-JOIN sales_order_items soi ON soi.product_id = p.product_id
-JOIN sales_orders so ON so.sales_order_id = soi.sales_order_id
-WHERE so.status = 'Delivered'
-GROUP BY p.product_id, p.product_name
-ORDER BY gross_margin DESC;
+    ) AS "Brüt Kar Marjı (%)"
+FROM urunler u
+JOIN satis_siparisi_kalemleri ssk ON ssk.urun_id = u.urun_id
+JOIN satis_siparisleri ss ON ss.satis_siparisi_id = ssk.satis_siparisi_id
+WHERE ss.durum = 'Teslim Edildi'
+GROUP BY u.urun_id, u.urun_adi
+ORDER BY "Brüt Kar" DESC;
 
--- 9. Replenishment Suggestion Report
-WITH current_stock AS (
+-- 9. Yenileme Önerisi Raporu
+WITH mevcut_stok AS (
     SELECT
-        p.product_id,
-        p.product_name,
-        p.min_stock,
-        p.max_stock,
+        u.urun_id,
+        u.urun_adi,
+        u.minimum_stok,
+        u.maksimum_stok,
         COALESCE(SUM(
             CASE
-                WHEN sm.movement_type = 'PURCHASE_IN' THEN sm.quantity
-                WHEN sm.movement_type = 'SALES_OUT' THEN -sm.quantity
+                WHEN sh.hareket_tipi = 'SATIN_ALMA_GIRIS' THEN sh.miktar
+                WHEN sh.hareket_tipi = 'SATIS_CIKIS' THEN -sh.miktar
                 ELSE 0
             END
-        ), 0) AS current_stock
-    FROM products p
-    LEFT JOIN stock_movements sm ON sm.product_id = p.product_id
-    GROUP BY p.product_id, p.product_name, p.min_stock, p.max_stock
+        ), 0) AS mevcut_stok
+    FROM urunler u
+    LEFT JOIN stok_hareketleri sh ON sh.urun_id = u.urun_id
+    GROUP BY u.urun_id, u.urun_adi, u.minimum_stok, u.maksimum_stok
 )
 SELECT
-    product_name,
-    current_stock,
-    min_stock,
-    max_stock,
+    urun_adi AS "Ürün",
+    mevcut_stok AS "Mevcut Stok",
+    minimum_stok AS "Minimum Stok",
+    maksimum_stok AS "Maksimum Stok",
     CASE
-        WHEN current_stock < min_stock THEN max_stock - current_stock
+        WHEN mevcut_stok < minimum_stok THEN maksimum_stok - mevcut_stok
         ELSE 0
-    END AS suggested_purchase_quantity
-FROM current_stock
-ORDER BY suggested_purchase_quantity DESC, product_name;
+    END AS "Önerilen Satın Alma Miktarı"
+FROM mevcut_stok
+ORDER BY "Önerilen Satın Alma Miktarı" DESC, "Ürün";

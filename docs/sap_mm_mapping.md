@@ -1,36 +1,36 @@
-# SAP MM Mapping
+# SAP MM Eşleştirmesi
 
-## Purpose
+## Amaç
 
-This document maps the Odoo-based case study to SAP MM concepts. The goal is to show that the same business process logic can be understood across ERP systems.
+Bu doküman, Odoo üzerinde uygulanan satın alma ve stok yönetimi sürecini SAP MM kavramlarıyla eşleştirir. Amaç, projedeki iş mantığının farklı ERP sistemlerinde de geçerli olduğunu göstermektir.
 
-## Concept Mapping
+## Kavram Eşleştirmesi
 
-| Project / Odoo Concept | SAP MM Concept | Explanation |
+| Proje / Odoo Kavramı | SAP MM Karşılığı | Açıklama |
 | --- | --- | --- |
-| Product | Material Master | Stores product information such as description, valuation, and stock planning data. |
-| Vendor | Vendor Master / Business Partner | Stores supplier information used in procurement transactions. |
-| Purchase Order | Purchase Order | Formal request to a vendor to supply materials or services. |
-| Purchase Order Line | PO Item | Line-level material, quantity, and price details. |
-| Goods Receipt | Goods Receipt for Purchase Order | Confirms that ordered goods have arrived and increases stock. |
-| Stock Movement | Material Document / Movement Type | Records inventory quantity changes. |
-| Sales Delivery | Goods Issue / Outbound Movement | Represents stock leaving inventory for customer delivery. |
-| Minimum Stock | Reorder Point | Quantity threshold used to identify replenishment needs. |
-| Maximum Stock | Target Stock Level | Used to calculate suggested purchase quantity. |
-| SQL Reports | Operational Reporting / Analytics | Supports procurement and inventory decisions. |
+| Ürün | Material Master | Ürün veya malzeme ana verisini temsil eder. |
+| Tedarikçi | Vendor Master / Business Partner | Satın alma sürecinde kullanılan tedarikçi bilgisidir. |
+| Satın Alma Siparişi | Purchase Order | Tedarikçiye verilen resmi satın alma belgesidir. |
+| Satın Alma Siparişi Kalemi | PO Item | Ürün, miktar ve fiyat detayını içerir. |
+| Mal Kabul | Goods Receipt | Satın alınan ürünün stoğa girişini gösterir. |
+| Stok Hareketi | Material Document / Movement Type | Stok miktarında oluşan artış veya azalışı kayıt altına alır. |
+| Satış Teslimatı | Goods Issue / Outbound Movement | Ürünün müşteriye teslim edilmesiyle stoktan çıkışını temsil eder. |
+| Minimum Stok | Reorder Point | Yenileme ihtiyacını belirlemek için kullanılan eşiktir. |
+| Maksimum Stok | Target Stock Level | Önerilen satın alma miktarını hesaplamak için kullanılır. |
+| SQL ve Power BI Raporları | Operational Reporting / Analytics | Satın alma ve stok kararlarını destekler. |
 
-## SAP MM Process Similarity
+## SAP MM Süreç Benzerliği
 
-The project follows a process similar to a basic SAP MM procurement cycle:
+Proje, temel SAP MM satın alma döngüsüyle benzer bir akışa sahiptir:
 
-1. Maintain master data.
-2. Create a Purchase Order.
-3. Receive goods against the Purchase Order.
-4. Update inventory stock.
-5. Review material movements.
-6. Analyze stock levels and replenishment needs.
+1. Ana veri hazırlanır.
+2. Satın alma siparişi oluşturulur.
+3. Mal kabul işlemi yapılır.
+4. Stok miktarı güncellenir.
+5. Stok hareketleri izlenir.
+6. Kritik stok ve yenileme ihtiyacı analiz edilir.
 
-## Key SAP MM Terms Demonstrated
+## Gösterilen SAP MM Terimleri
 
 - Material Master
 - Vendor Master
@@ -43,6 +43,6 @@ The project follows a process similar to a basic SAP MM procurement cycle:
 - Reorder Point
 - Replenishment Planning
 
-## Portfolio Value
+## Portföy Değeri
 
-This mapping helps show ERP transferability. Even though the practical simulation uses Odoo, the process logic is relevant for SAP MM because the business flow, master data, purchasing documents, and inventory movements are common ERP concepts.
+Bu eşleştirme, Odoo üzerinde yapılan çalışmanın SAP MM danışmanlığı için de anlamlı olduğunu gösterir. Master data, satın alma belgesi, mal kabul ve stok hareketi kavramları ERP sistemlerinde ortak iş mantığına sahiptir.

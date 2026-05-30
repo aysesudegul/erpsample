@@ -1,67 +1,69 @@
-# SQL Guide
+# SQL Rehberi
 
-## Purpose
+## Amaç
 
-This folder contains a standalone PostgreSQL reporting database structure for the ERP Procurement & Inventory Management Case Study.
+Bu klasör, ERP Satın Alma ve Stok Yönetimi Portföy Projesi için hazırlanmış PostgreSQL raporlama modelini içerir.
 
-The SQL files do not connect to Odoo and do not modify any Odoo installation. They are designed for manual execution in PostgreSQL or pgAdmin.
+SQL dosyaları Odoo veritabanına bağlanmaz ve Odoo kurulumunu değiştirmez. Odoo'da uygulanan süreç, portföy ve analiz amacıyla ayrı bir PostgreSQL veri modeli üzerinde temsil edilir.
 
-## Files
+## Dosyalar
 
-| File | Purpose |
+| Dosya | Amaç |
 | --- | --- |
-| `create_tables.sql` | Creates the reporting tables, constraints, keys, and indexes. |
-| `insert_sample_data.sql` | Inserts vendors, customers, products, purchase orders, sales order, and stock movements. |
-| `reports.sql` | Contains SQL reports for procurement and inventory analysis. |
+| `create_tables.sql` | Türkçe anlamlı tablo ve kolon adlarıyla raporlama modelini oluşturur. |
+| `insert_sample_data.sql` | Tedarikçi, müşteri, ürün, satın alma siparişi, satış siparişi ve stok hareketi verilerini ekler. |
+| `reports.sql` | Satın alma, stok, satış ve karlılık raporlarını içerir. |
+| `powerbi_chart_data.sql` | Power BI görselleri için kullanılabilecek odaklı sorguları içerir. |
 
-## Recommended Execution Order
+## Çalıştırma Sırası
 
-1. Create a PostgreSQL database, for example:
+1. PostgreSQL içinde yeni bir veritabanı oluşturun:
 
 ```sql
-CREATE DATABASE erp_procurement_inventory;
+CREATE DATABASE erp_satin_alma_stok;
 ```
 
-2. Connect to the database in pgAdmin.
-3. Run `create_tables.sql`.
-4. Run `insert_sample_data.sql`.
-5. Run each report query from `reports.sql`.
+2. pgAdmin içinde bu veritabanına bağlanın.
+3. `create_tables.sql` dosyasını çalıştırın.
+4. `insert_sample_data.sql` dosyasını çalıştırın.
+5. `reports.sql` dosyasındaki rapor sorgularını çalıştırın.
+6. Power BI için `powerbi_chart_data.sql` dosyasındaki sorguları kullanın.
 
-## Expected Stock Result
+## Beklenen Stok Sonucu
 
-After inserting the sample data, the Current Stock Report should show:
+Örnek veriler yüklendikten sonra Mevcut Stok Raporu aşağıdaki sonuçları göstermelidir:
 
-| Product | Current Stock |
+| Ürün | Mevcut Stok |
 | --- | ---: |
 | Wireless Mouse | 45 |
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-Other products exist in the product master data but do not have purchase or sales movements in the sample transaction set.
+Diğer ürünler ürün ana verisinde bulunur, ancak örnek işlem setinde stok hareketleri yoktur.
 
-## Report List
+## Rapor Listesi
 
-The report file includes:
+`reports.sql` dosyasında şu raporlar bulunur:
 
-- Current Stock Report
-- Critical Stock Report
-- Vendor Spend Report
-- Top Selling Products Report
-- Stock Movement History Report
-- Purchase Order Status Report
-- Sales Order Status Report
-- Gross Margin by Product
-- Replenishment Suggestion Report
+- Mevcut Stok Raporu
+- Kritik Stok Raporu
+- Tedarikçi Harcama Raporu
+- En Çok Satan Ürünler Raporu
+- Stok Hareket Geçmişi
+- Satın Alma Siparişi Durum Raporu
+- Satış Siparişi Durum Raporu
+- Ürün Bazlı Brüt Kar Marjı
+- Yenileme Önerisi Raporu
 
-## Replenishment Logic
+## Yenileme Mantığı
 
-The replenishment report uses this logic:
+Yenileme önerisi şu kurala göre hesaplanır:
 
 ```text
-If current stock is below minimum stock:
-    suggested purchase quantity = maximum stock - current stock
-Otherwise:
-    suggested purchase quantity = 0
+Eğer mevcut stok minimum stoktan düşükse:
+    önerilen satın alma miktarı = maksimum stok - mevcut stok
+Aksi halde:
+    önerilen satın alma miktarı = 0
 ```
 
-This supports simple inventory review and purchasing recommendations.
+Bu mantık, satın alma ve stok planlama kararlarını desteklemek için basit ve anlaşılır bir yöntem sağlar.

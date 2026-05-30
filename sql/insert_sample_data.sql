@@ -1,21 +1,21 @@
--- ERP Procurement & Inventory Management Case Study
--- Sample data for PostgreSQL reporting database
+-- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- PostgreSQL raporlama modeli için örnek veri seti
 
-INSERT INTO vendors (vendor_name) VALUES
+INSERT INTO tedarikciler (tedarikci_adi) VALUES
     ('Anadolu Electronics'),
     ('OfficePro Supply'),
     ('TechnoSource B2B'),
     ('Global Office Supplier'),
     ('Akdeniz Computer Systems');
 
-INSERT INTO customers (customer_name) VALUES
+INSERT INTO musteriler (musteri_adi) VALUES
     ('ABC Consulting'),
     ('Mavi Software'),
     ('Delta Academy'),
     ('Northwind Logistics'),
     ('Bright Future Education');
 
-INSERT INTO products (product_name, cost, sales_price, min_stock, max_stock) VALUES
+INSERT INTO urunler (urun_adi, maliyet, satis_fiyati, minimum_stok, maksimum_stok) VALUES
     ('Wireless Mouse', 150.00, 250.00, 30, 60),
     ('Mechanical Keyboard', 300.00, 500.00, 30, 50),
     ('24-inch Monitor', 3000.00, 4500.00, 10, 20),
@@ -25,81 +25,81 @@ INSERT INTO products (product_name, cost, sales_price, min_stock, max_stock) VAL
     ('Office Chair', 1200.00, 2200.00, 10, 25),
     ('Barcode Scanner', 2500.00, 3900.00, 5, 15);
 
-INSERT INTO purchase_orders (po_number, vendor_id, order_date, status)
-SELECT 'PO-001', vendor_id, DATE '2026-01-10', 'Received'
-FROM vendors
-WHERE vendor_name = 'Anadolu Electronics';
+INSERT INTO satin_alma_siparisleri (siparis_no, tedarikci_id, siparis_tarihi, durum)
+SELECT 'PO-001', tedarikci_id, DATE '2026-01-10', 'Alındı'
+FROM tedarikciler
+WHERE tedarikci_adi = 'Anadolu Electronics';
 
-INSERT INTO purchase_order_items (purchase_order_id, product_id, quantity, unit_cost)
-SELECT po.purchase_order_id, p.product_id, data.quantity, data.unit_cost
-FROM purchase_orders po
+INSERT INTO satin_alma_siparisi_kalemleri (satin_alma_siparisi_id, urun_id, miktar, birim_maliyet)
+SELECT sas.satin_alma_siparisi_id, u.urun_id, veri.miktar, veri.birim_maliyet
+FROM satin_alma_siparisleri sas
 CROSS JOIN (
     VALUES
         ('Wireless Mouse', 30, 150.00),
         ('Mechanical Keyboard', 20, 300.00),
         ('24-inch Monitor', 10, 3000.00)
-) AS data(product_name, quantity, unit_cost)
-JOIN products p ON p.product_name = data.product_name
-WHERE po.po_number = 'PO-001';
+) AS veri(urun_adi, miktar, birim_maliyet)
+JOIN urunler u ON u.urun_adi = veri.urun_adi
+WHERE sas.siparis_no = 'PO-001';
 
-INSERT INTO sales_orders (so_number, customer_id, order_date, status)
-SELECT 'SO-001', customer_id, DATE '2026-01-15', 'Delivered'
-FROM customers
-WHERE customer_name = 'ABC Consulting';
+INSERT INTO satis_siparisleri (siparis_no, musteri_id, siparis_tarihi, durum)
+SELECT 'SO-001', musteri_id, DATE '2026-01-15', 'Teslim Edildi'
+FROM musteriler
+WHERE musteri_adi = 'ABC Consulting';
 
-INSERT INTO sales_order_items (sales_order_id, product_id, quantity, unit_price)
-SELECT so.sales_order_id, p.product_id, data.quantity, data.unit_price
-FROM sales_orders so
+INSERT INTO satis_siparisi_kalemleri (satis_siparisi_id, urun_id, miktar, birim_fiyat)
+SELECT ss.satis_siparisi_id, u.urun_id, veri.miktar, veri.birim_fiyat
+FROM satis_siparisleri ss
 CROSS JOIN (
     VALUES
         ('Wireless Mouse', 5, 250.00),
         ('Mechanical Keyboard', 3, 500.00),
         ('24-inch Monitor', 2, 4500.00)
-) AS data(product_name, quantity, unit_price)
-JOIN products p ON p.product_name = data.product_name
-WHERE so.so_number = 'SO-001';
+) AS veri(urun_adi, miktar, birim_fiyat)
+JOIN urunler u ON u.urun_adi = veri.urun_adi
+WHERE ss.siparis_no = 'SO-001';
 
-INSERT INTO purchase_orders (po_number, vendor_id, order_date, status)
-SELECT 'PO-002', vendor_id, DATE '2026-01-20', 'Received'
-FROM vendors
-WHERE vendor_name = 'OfficePro Supply';
+INSERT INTO satin_alma_siparisleri (siparis_no, tedarikci_id, siparis_tarihi, durum)
+SELECT 'PO-002', tedarikci_id, DATE '2026-01-20', 'Alındı'
+FROM tedarikciler
+WHERE tedarikci_adi = 'OfficePro Supply';
 
-INSERT INTO purchase_order_items (purchase_order_id, product_id, quantity, unit_cost)
-SELECT po.purchase_order_id, p.product_id, data.quantity, data.unit_cost
-FROM purchase_orders po
+INSERT INTO satin_alma_siparisi_kalemleri (satin_alma_siparisi_id, urun_id, miktar, birim_maliyet)
+SELECT sas.satin_alma_siparisi_id, u.urun_id, veri.miktar, veri.birim_maliyet
+FROM satin_alma_siparisleri sas
 CROSS JOIN (
     VALUES
         ('Wireless Mouse', 20, 150.00),
         ('Mechanical Keyboard', 10, 300.00)
-) AS data(product_name, quantity, unit_cost)
-JOIN products p ON p.product_name = data.product_name
-WHERE po.po_number = 'PO-002';
+) AS veri(urun_adi, miktar, birim_maliyet)
+JOIN urunler u ON u.urun_adi = veri.urun_adi
+WHERE sas.siparis_no = 'PO-002';
 
-INSERT INTO stock_movements (product_id, movement_date, movement_type, quantity, reference_document, notes)
-SELECT p.product_id, DATE '2026-01-11', 'PURCHASE_IN', data.quantity, 'PO-001', 'Goods receipt for Purchase Order PO-001'
+INSERT INTO stok_hareketleri (urun_id, hareket_tarihi, hareket_tipi, miktar, referans_belge, aciklama)
+SELECT u.urun_id, DATE '2026-01-11', 'SATIN_ALMA_GIRIS', veri.miktar, 'PO-001', 'PO-001 satın alma siparişi için mal kabul'
 FROM (
     VALUES
         ('Wireless Mouse', 30),
         ('Mechanical Keyboard', 20),
         ('24-inch Monitor', 10)
-) AS data(product_name, quantity)
-JOIN products p ON p.product_name = data.product_name;
+) AS veri(urun_adi, miktar)
+JOIN urunler u ON u.urun_adi = veri.urun_adi;
 
-INSERT INTO stock_movements (product_id, movement_date, movement_type, quantity, reference_document, notes)
-SELECT p.product_id, DATE '2026-01-16', 'SALES_OUT', data.quantity, 'SO-001', 'Delivery validation for Sales Order SO-001'
+INSERT INTO stok_hareketleri (urun_id, hareket_tarihi, hareket_tipi, miktar, referans_belge, aciklama)
+SELECT u.urun_id, DATE '2026-01-16', 'SATIS_CIKIS', veri.miktar, 'SO-001', 'SO-001 satış siparişi için teslimat doğrulama'
 FROM (
     VALUES
         ('Wireless Mouse', 5),
         ('Mechanical Keyboard', 3),
         ('24-inch Monitor', 2)
-) AS data(product_name, quantity)
-JOIN products p ON p.product_name = data.product_name;
+) AS veri(urun_adi, miktar)
+JOIN urunler u ON u.urun_adi = veri.urun_adi;
 
-INSERT INTO stock_movements (product_id, movement_date, movement_type, quantity, reference_document, notes)
-SELECT p.product_id, DATE '2026-01-21', 'PURCHASE_IN', data.quantity, 'PO-002', 'Goods receipt for Purchase Order PO-002'
+INSERT INTO stok_hareketleri (urun_id, hareket_tarihi, hareket_tipi, miktar, referans_belge, aciklama)
+SELECT u.urun_id, DATE '2026-01-21', 'SATIN_ALMA_GIRIS', veri.miktar, 'PO-002', 'PO-002 satın alma siparişi için mal kabul'
 FROM (
     VALUES
         ('Wireless Mouse', 20),
         ('Mechanical Keyboard', 10)
-) AS data(product_name, quantity)
-JOIN products p ON p.product_name = data.product_name;
+) AS veri(urun_adi, miktar)
+JOIN urunler u ON u.urun_adi = veri.urun_adi;
