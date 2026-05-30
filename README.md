@@ -1,16 +1,16 @@
-# ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+ERP Satın Alma ve Stok Yönetimi Portföy Projesi
 
-## Proje Amacı
+Proje Amacı
 
 Bu repo, Odoo ERP üzerinde uygulanmış uçtan uca bir satın alma ve stok yönetimi portföy projesidir. Projede tedarikçi, müşteri ve ürün ana verileri oluşturulmuş; satın alma siparişi, mal kabul, satış siparişi, teslimat ve stok hareketi süreçleri tamamlanmıştır.
 
 Çalışma, Odoo'da yürütülen ERP sürecini PostgreSQL raporları ve Power BI dashboard veri setleriyle destekler. Amaç, junior SAP MM danışmanı, ERP danışmanı, ERP destek uzmanı veya iş analisti pozisyonları için gösterilebilir, düzenli ve profesyonel bir GitHub portföy çıktısı hazırlamaktır.
 
-> Not: Bu repo doğrudan Odoo veritabanına bağlanmaz ve yerel Odoo kurulumunu değiştirmez. Odoo'da uygulanan iş süreci, ayrıca hazırlanmış PostgreSQL raporlama tabloları ve Power BI chart data dosyalarıyla dokümante edilmiştir.
+Not: Bu repo doğrudan Odoo veritabanına bağlanmaz ve yerel Odoo kurulumunu değiştirmez. Odoo'da uygulanan iş süreci, ayrıca hazırlanmış PostgreSQL raporlama tabloları ve Power BI chart data dosyalarıyla dokümante edilmiştir.
 
-## İş Senaryosu
+İş Senaryosu
 
-NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
+NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirket. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
 
 Şirketin yönetmesi gereken temel süreçler:
 
@@ -38,7 +38,7 @@ NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirk
 - Markdown
 - Mermaid diyagramları
 
-## Odoo'da Uygulanan Süreçler
+Odoo'da Uygulanan Süreçler
 
 Bu portföy projesinde Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır:
 
@@ -55,7 +55,7 @@ Bu portföy projesinde Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır
 11. Kritik stok ve yenileme analizi
 12. SQL ve Power BI raporlama çıktılarının hazırlanması
 
-## Odoo Süreç Özeti
+doo Süreç Özeti
 
 Odoo tarafında süreç Contacts, Purchase, Inventory ve Sales modülleriyle yürütülmüştür.
 
@@ -63,7 +63,7 @@ Odoo tarafında süreç Contacts, Purchase, Inventory ve Sales modülleriyle yü
 
 Bu akış, ERP sistemlerinde satın alma ve stok yönetiminin nasıl birbirine bağlandığını gösterir: ana veri, işlem belgesi, stok hareketi ve raporlama aynı iş sürecinin parçalarıdır.
 
-## PostgreSQL Raporlama
+PostgreSQL Raporlama
 
 SQL klasörü, Odoo'da uygulanan süreci temsil eden ayrı bir PostgreSQL raporlama modeli içerir. Bu yapı Odoo veritabanına bağlanmadan, portföy ve analiz amacıyla hazırlanmıştır.
 
@@ -100,12 +100,11 @@ Power BI için iki kullanım yöntemi desteklenir:
 1. PostgreSQL'e bağlanıp `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak
 2. `powerbi/chart_data/` klasöründeki hazır CSV dosyalarını Power BI'a aktarmak
 
-## SAP MM İlişkisi
+SAP MM İlişkisi
 
 Proje Odoo üzerinde uygulanmış olsa da süreç SAP MM kavramlarıyla doğrudan ilişkilidir.
 
 | Odoo / Proje Alanı | SAP MM Karşılığı |
-| --- | --- |
 | Ürün ana verisi | Material Master |
 | Tedarikçi ana verisi | Vendor Master / Business Partner |
 | Satın alma siparişi | Purchase Order |
@@ -148,7 +147,7 @@ Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir p
     └── README.md
 ```
 
-## SQL Dosyaları Nasıl Kullanılır?
+SQL Dosyaları Nasıl Kullanılır?
 
 1. PostgreSQL içinde yeni bir veritabanı oluşturun. Örnek: `erp_satin_alma_stok`.
 2. pgAdmin veya başka bir PostgreSQL aracı açın.
@@ -165,7 +164,7 @@ Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir p
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-## Sunum Kanıtları İçin Ekran Görüntüleri
+Sunum Kanıtları İçin Ekran Görüntüleri
 
 Portföy sunumunu güçlendirmek için `screenshots/` klasörüne aşağıdaki Odoo ve rapor çıktıları eklenebilir:
 
@@ -180,23 +179,6 @@ Portföy sunumunu güçlendirmek için `screenshots/` klasörüne aşağıdaki O
 - PostgreSQL mevcut stok raporu
 - Power BI dashboard ekranı
 
-## Portföy Değeri
 
-Bu proje, ERP süreç anlayışını teknik raporlama becerisiyle birleştirir. Odoo üzerinde uygulanan satın alma ve stok yönetimi süreci, PostgreSQL raporları ve Power BI chart data dosyalarıyla analiz edilebilir hale getirilmiştir.
 
-Proje özellikle şu rollere uygun bir portföy çıktısıdır:
 
-- Junior SAP MM Consultant
-- Junior ERP Consultant
-- ERP Support Specialist
-- Business Analyst
-- Procurement Analyst
-- Inventory Analyst
-
-## Türkçe CV Açıklaması
-
-Odoo ERP üzerinde satın alma ve stok yönetimi sürecini uçtan uca uyguladım. Tedarikçi, müşteri ve ürün ana verilerini oluşturdum; satın alma siparişleri, mal kabul, satış siparişleri ve teslimat süreçlerini tamamladım. Stok hareketlerini PostgreSQL üzerinde raporladım ve Power BI dashboard tasarımı için grafik veri setleri hazırladım. Süreci SAP MM kavramlarıyla eşleştirerek portföy projesi olarak dokümante ettim.
-
-## Mülakatta Anlatılabilecek Kısa Pitch
-
-Bu projede küçük bir ofis ekipmanları şirketi için Odoo üzerinde satın alma ve stok yönetimi sürecini uçtan uca uyguladım. Tedarikçi, müşteri ve ürün ana verilerini oluşturdum; satın alma siparişlerini mal kabul ile stoğa aldım, satış siparişlerini teslimatla tamamladım ve stok hareketlerini takip ettim. Daha sonra aynı süreci PostgreSQL üzerinde raporlanabilir hale getirdim ve Power BI için grafik veri setleri hazırladım. Projeyi SAP MM kavramlarıyla eşleştirerek ERP danışmanlığı portföyümde sunulabilir bir case study haline getirdim.
