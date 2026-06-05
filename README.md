@@ -2,21 +2,21 @@ ERP Satın Alma ve Stok Yönetimi Projesi
 
 Proje Amacı
 
-Bu repo, Odoo ERP üzerinde uygulanmış uçtan uca bir satın alma ve stok yönetimi çalışmasını içerir. Projede tedarikçi, müşteri ve ürün ana verileri oluşturulmuş; satın alma siparişi, mal kabul, satış siparişi, teslimat ve stok hareketi süreçleri tamamlanmıştır.
+Bu projede küçük bir ofis ekipmanları şirketi için satın alma, stok ve satış sürecini uçtan uca kurguladım. Süreci Odoo ERP mantığına göre düşündüm; tedarikçi, müşteri ve ürün bilgilerini oluşturdum, satın alma siparişi ve mal kabul adımlarını tamamladım, ardından satış ve teslimat sonrası stok çıkışını takip ettim.
 
-Çalışma, Odoo'da yürütülen ERP sürecini PostgreSQL raporları ve Power BI dashboard veri setleriyle destekler. Amaç, satın alma ve stok sürecinin ERP içinde nasıl ilerlediğini ve raporlama tarafına nasıl taşındığını göstermektir.
+Sadece ERP adımlarını yazmakla kalmadım. Bu sürecin raporlanabilir olması için ayrı bir PostgreSQL modeli hazırladım ve Power BI tarafında kullanılabilecek CSV veri setleri ekledim. Böylece süreç, veri tabanı ve dashboard tarafı aynı örnek senaryo içinde birbirine bağlandı.
 
-Not: Bu repo doğrudan Odoo veritabanına bağlanmaz ve yerel Odoo kurulumunu değiştirmez. Odoo'da uygulanan iş süreci, ayrıca hazırlanmış PostgreSQL raporlama tabloları ve Power BI chart data dosyalarıyla dokümante edilmiştir.
+Not: Bu repo doğrudan canlı bir Odoo veritabanına bağlanmaz. Odoo'da yapılan süreci temsil eden örnek PostgreSQL tabloları, SQL raporları ve Power BI veri dosyaları içerir.
 
 İş Senaryosu
 
-NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirket. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
+Örnek şirket olarak NovaTech Office Supplies adında küçük bir ofis ekipmanları şirketi kullandım. Bu şirket tedarikçilerden ürün satın alıyor, ürünleri stokta tutuyor ve kurumsal müşterilere satış yapıyor.
 
-Şirketin yönetmesi gereken temel süreçler:
+Bu senaryoda takip ettiğim ana süreçler:
 
-- Tedarikçi ana verileri
-- Müşteri ana verileri
-- Ürün ana verileri
+- Tedarikçi bilgileri
+- Müşteri bilgileri
+- Ürün bilgileri
 - Satın alma siparişleri
 - Mal kabul işlemleri
 - Stok girişleri
@@ -24,7 +24,7 @@ NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirket. Şirket 
 - Teslimat doğrulama
 - Stok çıkışları
 - Stok hareket takibi
-- Kritik stok ve yenileme analizi
+- Kritik stok ve yenileme ihtiyacı
 - SQL ve Power BI ile raporlama
 
 ## Kullanılan Araçlar
@@ -38,56 +38,53 @@ NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirket. Şirket 
 - Markdown
 - Mermaid diyagramları
 
-Odoo'da Uygulanan Süreçler
+Odoo'da Kurguladığım Süreç
 
-Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır:
+Projede Odoo tarafını şu sırayla ele aldım:
 
-1. Tedarikçi ana verilerinin oluşturulması
-2. Müşteri ana verilerinin oluşturulması
-3. Ürün ana verilerinin oluşturulması
-4. Satın Alma Siparişi oluşturulması
-5. Mal Kabul / Ürün Kabul işlemi
-6. Stok artışının izlenmesi
-7. Satış Siparişi oluşturulması
-8. Teslimat doğrulama
-9. Stok azalışının izlenmesi
-10. Stok hareketlerinin takip edilmesi
-11. Kritik stok ve yenileme analizi
-12. SQL ve Power BI raporlama çıktılarının hazırlanması
+1. Önce tedarikçi kayıtlarını oluşturdum.
+2. Sonra müşteri kayıtlarını hazırladım.
+3. Ürünleri maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileriyle tanımladım.
+4. Tedarikçiler için satın alma siparişleri oluşturdum.
+5. Ürünler geldiğinde mal kabul işlemini yaptım.
+6. Mal kabul sonrası stok artışını takip ettim.
+7. Müşteri için satış siparişi oluşturdum.
+8. Teslimatı doğruladım.
+9. Teslimat sonrası stok azalışını izledim.
+10. Stok hareketlerini raporlanabilir hale getirdim.
+11. Kritik stok ve yenileme önerisi raporlarını hazırladım.
 
 Odoo Süreç Özeti
 
-Odoo tarafında süreç Contacts, Purchase, Inventory ve Sales modülleriyle yürütülmüştür.
+Odoo tarafında Contacts, Purchase, Inventory ve Sales modüllerini baz aldım. Süreç tedarikçi ve ürün ana verisiyle başlıyor, satın alma siparişi ve mal kabul ile devam ediyor. Satış tarafında ise müşteri siparişi ve teslimat sonrası stoktan çıkış oluşuyor.
 
-Önce tedarikçi, müşteri ve ürün ana verileri hazırlanmıştır. Ardından tedarikçiler için satın alma siparişleri oluşturulmuş ve gelen ürünler mal kabul işlemiyle stoğa alınmıştır. Daha sonra müşteri satış siparişi hazırlanmış, teslimat doğrulanmış ve stok çıkışı gerçekleşmiştir.
-
-Bu akış, ERP sistemlerinde satın alma ve stok yönetiminin nasıl birbirine bağlandığını gösterir: ana veri, işlem belgesi, stok hareketi ve raporlama aynı iş sürecinin parçalarıdır.
+Bu akış bana ERP sistemlerinde ana veri, işlem belgesi, stok hareketi ve raporlamanın birbirinden kopuk olmadığını gösterdi. Bir satın alma siparişi sadece belge olarak kalmıyor; mal kabul yapıldığında stok etkileniyor, stok hareketleri oluşuyor ve bu veriler raporlara temel oluyor.
 
 PostgreSQL Raporlama
 
-SQL klasörü, Odoo'da uygulanan süreci temsil eden ayrı bir PostgreSQL raporlama modeli içerir. Bu yapı Odoo veritabanına bağlanmadan, analiz ve raporlama amacıyla hazırlanmıştır.
+Odoo sürecini ayrı bir PostgreSQL raporlama modeliyle temsil ettim. Burada amacım canlı Odoo veritabanına bağlanmak değil, ERP mantığını SQL tarafında anlaşılır bir veri modeline çevirmekti.
 
-Hazırlanan SQL raporları:
+Hazırladığım SQL raporları:
 
-- Mevcut Stok Raporu
-- Kritik Stok Raporu
-- Tedarikçi Harcama Raporu
-- En Çok Satan Ürünler Raporu
-- Stok Hareket Geçmişi
-- Satın Alma Siparişi Durum Raporu
-- Satış Siparişi Durum Raporu
-- Ürün Bazlı Brüt Kar Marjı
-- Yenileme Önerisi Raporu
+- Mevcut stok raporu
+- Kritik stok raporu
+- Tedarikçi harcama raporu
+- En çok satan ürünler raporu
+- Stok hareket geçmişi
+- Satın alma siparişi durum raporu
+- Satış siparişi durum raporu
+- Ürün bazlı brüt kar marjı
+- Yenileme önerisi raporu
 
-Stok hesapları `stok_hareketleri` tablosu üzerinden yapılır. Mal kabul hareketleri `SATIN_ALMA_GIRIS`, teslimat hareketleri ise `SATIS_CIKIS` olarak tutulur.
+Stok hesabını `stok_hareketleri` tablosu üzerinden yaptım. Mal kabul hareketlerini `SATIN_ALMA_GIRIS`, teslimat hareketlerini de `SATIS_CIKIS` olarak tuttum.
 
 ## Power BI Dashboard Entegrasyonu
 
-Power BI klasörü, dashboard görsellerinde kullanılacak veri setlerini içerir.
+Power BI için ayrı CSV dosyaları hazırladım. Bu dosyalar dashboard üzerinde stok, satın alma, satış ve karlılık analizlerini göstermek için kullanılabilir.
 
-Power BI tarafında hedeflenen dashboard görselleri:
+Dashboard tarafında hedeflediğim görseller:
 
-- Ürün bazlı mevcut stok bar chart
+- Ürün bazlı mevcut stok grafiği
 - Kritik stok tablosu
 - Tedarikçi harcama grafiği
 - En çok satan ürünler grafiği
@@ -95,16 +92,17 @@ Power BI tarafında hedeflenen dashboard görselleri:
 - Yenileme önerileri tablosu
 - Stok hareketleri zaman çizelgesi
 
-Power BI için iki kullanım yöntemi desteklenir:
+Power BI için iki kullanım yolu bıraktım:
 
 1. PostgreSQL'e bağlanıp `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak
 2. `powerbi/chart_data/` klasöründeki hazır CSV dosyalarını Power BI'a aktarmak
 
-SAP MM İlişkisi
+SAP MM ile Bağlantısı
 
-Proje Odoo üzerinde uygulanmış olsa da süreç SAP MM kavramlarıyla doğrudan ilişkilidir.
+Projeyi Odoo üzerinden kurguladım ama süreç SAP MM tarafındaki temel kavramlarla da örtüşüyor.
 
 | Odoo / Proje Alanı | SAP MM Karşılığı |
+| --- | --- |
 | Ürün ana verisi | Material Master |
 | Tedarikçi ana verisi | Vendor Master / Business Partner |
 | Satın alma siparişi | Purchase Order |
@@ -113,7 +111,7 @@ Proje Odoo üzerinde uygulanmış olsa da süreç SAP MM kavramlarıyla doğruda
 | Minimum ve maksimum stok | Reorder Point / Replenishment Planning |
 | Satın alma ve stok raporları | Procurement and Inventory Analytics |
 
-Bu nedenle proje, SAP MM tarafındaki satın alma ve stok yönetimi kavramlarıyla ilişkilendirilebilir.
+Bu yüzden projeyi sadece Odoo örneği gibi değil, genel ERP satın alma ve stok yönetimi mantığını anlatan bir çalışma olarak hazırladım.
 
 ## Repo Yapısı
 
@@ -137,11 +135,11 @@ Bu nedenle proje, SAP MM tarafındaki satın alma ve stok yönetimi kavramlarıy
 │       ├── brut_kar_marji.csv
 │       └── yenileme_onerileri.csv
 └── sql/
-│   ├── create_tables.sql
-│   ├── insert_sample_data.sql
-│   ├── reports.sql
-│   ├── powerbi_chart_data.sql
-│   └── README.md
+    ├── create_tables.sql
+    ├── insert_sample_data.sql
+    ├── reports.sql
+    ├── powerbi_chart_data.sql
+    └── README.md
 ```
 
 SQL Dosyaları Nasıl Kullanılır?

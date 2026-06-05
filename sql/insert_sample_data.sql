@@ -1,5 +1,5 @@
--- ERP satın alma ve stok yönetimi örnek veri seti
--- PostgreSQL raporlama modeli için örnek veri seti
+-- Bu dosyada raporları test etmek için kullandığım örnek verileri ekledim.
+-- Veriler NovaTech Office Supplies senaryosundaki tedarikçi, müşteri, ürün ve stok hareketlerini temsil ediyor.
 
 INSERT INTO tedarikciler (tedarikci_adi) VALUES
     ('Anadolu Electronics'),

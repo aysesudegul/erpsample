@@ -1,5 +1,5 @@
--- ERP satın alma ve stok yönetimi Power BI sorguları
--- Power BI grafiklerinde kullanılabilecek odaklı sorgular
+-- Bu dosyada Power BI grafiklerinde kullanmak için ayırdığım sorgular var.
+-- Amaç, dashboard tarafında doğrudan kullanılabilecek daha sade veri çıktıları üretmek.
 
 -- Power BI Görseli 1: Mevcut Stok Bar Chart
 SELECT

@@ -1,5 +1,5 @@
--- ERP satın alma ve stok yönetimi raporlama sorguları
--- PostgreSQL raporlama sorguları
+-- Bu dosyada satın alma, stok, satış ve karlılık için hazırladığım rapor sorguları var.
+-- Raporlar stok hareketlerinden mevcut stok ve kritik stok gibi sonuçları hesaplıyor.
 
 -- 1. Mevcut Stok Raporu
 SELECT

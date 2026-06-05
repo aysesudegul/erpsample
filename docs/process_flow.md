@@ -2,7 +2,7 @@
 
 ## Uçtan Uca ERP Akışı
 
-Bu proje, Odoo üzerinde uygulanan satın alma, mal kabul, satış, teslimat ve stok hareketleri sürecini gösterir.
+Bu dosyada Odoo tarafında kurguladığım satın alma, mal kabul, satış, teslimat ve stok hareketleri sürecini özetledim.
 
 ```mermaid
 flowchart TD
@@ -24,7 +24,7 @@ flowchart TD
 
 ### 1. Tedarikçi Ana Verisi
 
-Odoo Contacts modülünde tedarikçi kayıtları oluşturulmuştur.
+İlk olarak Odoo Contacts modülünde tedarikçi kayıtlarını hazırladım.
 
 Örnek tedarikçiler:
 
@@ -36,7 +36,7 @@ Odoo Contacts modülünde tedarikçi kayıtları oluşturulmuştur.
 
 ### 2. Müşteri Ana Verisi
 
-Odoo Contacts modülünde müşteri kayıtları oluşturulmuştur.
+Aynı modülde müşteri kayıtlarını da oluşturdum.
 
 Örnek müşteriler:
 
@@ -48,13 +48,13 @@ Odoo Contacts modülünde müşteri kayıtları oluşturulmuştur.
 
 ### 3. Ürün Ana Verisi
 
-Odoo'da ürünler maliyet, satış fiyatı ve stok takip bilgileriyle hazırlanmıştır.
+Ürünleri maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileriyle tanımladım.
 
-Bu bilgiler satın alma, satış, stok kontrolü ve yenileme analizi için temel veri olarak kullanılır.
+Bu bilgiler daha sonra satın alma, satış, stok kontrolü ve yenileme analizi için temel veri oldu.
 
 ### 4. Satın Alma Siparişi
 
-Tedarikçilerden ürün almak için satın alma siparişleri oluşturulmuştur.
+Tedarikçilerden ürün almak için satın alma siparişleri oluşturdum.
 
 Örnek:
 
@@ -63,21 +63,19 @@ Tedarikçilerden ürün almak için satın alma siparişleri oluşturulmuştur.
 
 ### 5. Mal Kabul
 
-Satın alınan ürünler geldiğinde Odoo Inventory tarafında mal kabul işlemi yapılmıştır.
+Satın alınan ürünler geldiğinde Inventory tarafında mal kabul adımını düşündüm.
 
-Bu işlem stok hareketlerinde `SATIN_ALMA_GIRIS` olarak temsil edilir.
+Bu hareketi SQL modelinde `SATIN_ALMA_GIRIS` olarak temsil ettim.
 
 ### 6. Stok Artışı
 
-Mal kabul sonrası ürünlerin stok miktarı artar.
+Mal kabulden sonra ürünlerin stok miktarı artıyor.
 
-Örnek:
-
-- 30 adet Wireless Mouse mal kabulü, Wireless Mouse stok miktarını 30 artırır.
+Örnek olarak 30 adet Wireless Mouse mal kabulü, Wireless Mouse stok miktarını 30 artırıyor.
 
 ### 7. Satış Siparişi
 
-Müşteri talebi için Odoo Sales modülünde satış siparişi oluşturulmuştur.
+Müşteri talebi için Sales modülünde satış siparişi oluşturdum.
 
 Örnek:
 
@@ -85,32 +83,30 @@ Müşteri talebi için Odoo Sales modülünde satış siparişi oluşturulmuştu
 
 ### 8. Teslimat Doğrulama
 
-Satış siparişi teslim edildiğinde Odoo Inventory tarafında teslimat doğrulanır.
+Satış siparişi teslim edildiğinde Inventory tarafında teslimat doğrulaması yapılıyor.
 
-Bu işlem stok hareketlerinde `SATIS_CIKIS` olarak temsil edilir.
+Bu hareketi SQL modelinde `SATIS_CIKIS` olarak temsil ettim.
 
 ### 9. Stok Azalışı
 
-Teslimat sonrası ilgili ürünlerin stok miktarı azalır.
+Teslimat sonrası ilgili ürünlerin stok miktarı azalıyor.
 
-Örnek:
-
-- 5 adet Wireless Mouse teslimatı, Wireless Mouse stok miktarını 5 azaltır.
+Örnek olarak 5 adet Wireless Mouse teslimatı, Wireless Mouse stok miktarını 5 azaltıyor.
 
 ### 10. Stok Hareket Takibi
 
-Her mal kabul ve teslimat işlemi stok hareketi olarak takip edilir.
+Mal kabul ve teslimat adımlarını stok hareketi olarak tuttum.
 
-Bu takip, ürün bazında stok geçmişini, belge referanslarını ve hareket türlerini analiz etmeyi sağlar.
+Böylece ürün bazında stok geçmişi, belge referansı ve hareket türü üzerinden analiz yapılabiliyor.
 
 ### 11. PostgreSQL Raporlama
 
-Odoo'da uygulanan süreç ayrı bir PostgreSQL raporlama modeliyle temsil edilmiştir.
+Odoo'daki süreci ayrı bir PostgreSQL raporlama modeliyle temsil ettim.
 
-Bu model üzerinden mevcut stok, kritik stok, tedarikçi harcaması, satış performansı ve brüt kar gibi raporlar hazırlanmıştır.
+Bu model üzerinden mevcut stok, kritik stok, tedarikçi harcaması, satış performansı ve brüt kar gibi raporları hazırladım.
 
 ### 12. Power BI Analizi
 
-Power BI için hazır CSV dosyaları ve SQL sorguları eklenmiştir.
+Power BI için hem CSV dosyaları hem de SQL sorguları ekledim.
 
 Bu verilerle ürün bazlı stok, kritik stok, tedarikçi harcaması, satış performansı ve yenileme önerileri görselleştirilebilir.

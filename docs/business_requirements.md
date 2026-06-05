@@ -2,26 +2,26 @@
 
 ## Proje Bağlamı
 
-NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
+Bu projede NovaTech Office Supplies adında örnek bir şirket kullandım. Şirket ofis ekipmanları satıyor; bu yüzden satın alma, stok ve satış süreçlerinin düzenli takip edilmesi gerekiyor.
 
-Bu çalışmada süreç Odoo ERP üzerinde uygulanmış, ardından PostgreSQL ve Power BI çıktılarıyla raporlanabilir hale getirilmiştir.
+Senaryoda şirketin tedarikçilerden ürün satın aldığını, gelen ürünleri stoğa aldığını ve müşterilere satış yaptığını varsaydım. Bu akışı Odoo ERP üzerinde kurguladım, sonra aynı süreci PostgreSQL ve Power BI tarafında raporlanabilir hale getirdim.
 
 ## İş Hedefleri
 
-- Tedarikçi, müşteri ve ürün ana verilerini düzenli şekilde yönetmek.
+- Tedarikçi, müşteri ve ürün bilgilerini düzenli tutmak.
 - Tedarikçiler için satın alma siparişi oluşturmak.
 - Gelen ürünleri mal kabul işlemiyle stoğa almak.
-- Mal kabul sonrası stok artışını izlemek.
-- Müşteri talepleri için satış siparişi oluşturmak.
-- Teslimat doğrulaması sonrası stok çıkışını izlemek.
+- Mal kabul sonrası stok artışını takip etmek.
+- Müşteri siparişi oluşturmak.
+- Teslimat sonrası stok çıkışını izlemek.
 - Stok hareketlerini belge referanslarıyla takip etmek.
-- Minimum stok altındaki ürünleri belirlemek.
+- Minimum stok altındaki ürünleri bulmak.
 - Maksimum stok seviyesine göre yenileme miktarı önermek.
 - SQL ve Power BI ile satın alma ve stok raporları hazırlamak.
 
 ## Kapsam
 
-Proje kapsamına giren alanlar:
+Bu çalışmada şunları kapsama aldım:
 
 - Tedarikçi ana verileri
 - Müşteri ana verileri
@@ -35,20 +35,20 @@ Proje kapsamına giren alanlar:
 - PostgreSQL raporları
 - Power BI chart data dosyaları
 
-Proje kapsamına girmeyen alanlar:
+Bu çalışmada özellikle dışarıda bıraktığım konular:
 
 - Muhasebe kayıtları
 - Faturalama
 - Ödeme işlemleri
 - Depo lokasyonu veya raf yönetimi
 - Barkod cihaz entegrasyonu
-- Odoo canlı veritabanına doğrudan bağlantı
+- Canlı Odoo veritabanına doğrudan bağlantı
 
 ## Ana Veri Gereksinimleri
 
 ### Tedarikçiler
 
-Odoo'da aşağıdaki tedarikçi ana verileri oluşturulmuştur:
+Odoo tarafında örnek olarak şu tedarikçileri kullandım:
 
 - Anadolu Electronics
 - OfficePro Supply
@@ -58,7 +58,7 @@ Odoo'da aşağıdaki tedarikçi ana verileri oluşturulmuştur:
 
 ### Müşteriler
 
-Odoo'da aşağıdaki müşteri ana verileri oluşturulmuştur:
+Müşteri tarafında şu örnek kayıtları oluşturdum:
 
 - ABC Consulting
 - Mavi Software
@@ -68,7 +68,7 @@ Odoo'da aşağıdaki müşteri ana verileri oluşturulmuştur:
 
 ### Ürünler
 
-Ürünlerde maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileri takip edilmiştir.
+Ürünlerde maliyet, satış fiyatı, minimum stok ve maksimum stok bilgilerini tuttum. Bu bilgiler hem satın alma hem stok kontrolü hem de yenileme önerisi için gerekli.
 
 | Ürün | Maliyet | Satış Fiyatı | Minimum Stok | Maksimum Stok |
 | --- | ---: | ---: | ---: | ---: |
@@ -85,7 +85,7 @@ Odoo'da aşağıdaki müşteri ana verileri oluşturulmuştur:
 
 ### Satın Alma Süreci
 
-Odoo'da tedarikçi bazlı satın alma siparişleri oluşturulmuş ve ürünler mal kabul işlemiyle stoğa alınmıştır.
+Satın alma tarafında tedarikçiler için sipariş oluşturdum ve ürünleri mal kabul işlemiyle stoğa aldım.
 
 PO-001:
 
@@ -104,7 +104,7 @@ PO-002:
 
 ### Satış Süreci
 
-Odoo'da müşteri için satış siparişi oluşturulmuş ve teslimat doğrulanarak stok çıkışı tamamlanmıştır.
+Satış tarafında örnek bir müşteri siparişi oluşturdum. Sipariş teslim edildiğinde ilgili ürünlerin stoktan düşmesini bekledim.
 
 SO-001:
 
@@ -116,7 +116,7 @@ SO-001:
 
 ## Raporlama Gereksinimleri
 
-PostgreSQL ve Power BI tarafında aşağıdaki analizler hazırlanmıştır:
+PostgreSQL ve Power BI tarafında şu analizleri hazırladım:
 
 - Ürün bazlı mevcut stok
 - Minimum stok altındaki ürünler
@@ -130,14 +130,14 @@ PostgreSQL ve Power BI tarafında aşağıdaki analizler hazırlanmıştır:
 
 ## Başarı Kriterleri
 
-Proje başarılı kabul edilir, çünkü:
+Bu projeyi başarılı saymam için şu sonuçlara baktım:
 
-- Odoo üzerinde uçtan uca satın alma ve stok süreci uygulanmıştır.
-- Süreç düzenli şekilde dokümante edilmiştir.
-- PostgreSQL dosyaları raporlama tablolarını ve örnek verileri oluşturur.
-- Stok raporları stok hareketlerinden hesaplanır.
-- Power BI için dashboard verileri hazırlanmıştır.
-- Örnek işlem sonrası stok değerleri beklenen sonuçları verir:
+- Odoo mantığıyla satın alma ve stok akışı kuruldu.
+- Süreç anlaşılır şekilde dokümante edildi.
+- PostgreSQL dosyaları tablo yapısını ve örnek verileri oluşturuyor.
+- Stok raporları stok hareketlerinden hesaplanıyor.
+- Power BI için kullanılabilecek dashboard verileri hazır.
+- Örnek işlem sonrası stok değerleri beklenen sonucu veriyor:
   - Wireless Mouse: 45
   - Mechanical Keyboard: 27
   - 24-inch Monitor: 8

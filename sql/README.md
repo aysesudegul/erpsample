@@ -2,18 +2,18 @@
 
 ## Amaç
 
-Bu klasör, ERP satın alma ve stok yönetimi çalışması için hazırlanmış PostgreSQL raporlama modelini içerir.
+Bu klasörde satın alma ve stok yönetimi süreci için hazırladığım PostgreSQL raporlama modelini tuttum. Odoo'daki süreci SQL tarafında anlaşılır bir yapıyla temsil etmek istedim.
 
-SQL dosyaları Odoo veritabanına bağlanmaz ve Odoo kurulumunu değiştirmez. Odoo'da uygulanan süreç, analiz amacıyla ayrı bir PostgreSQL veri modeli üzerinde temsil edilir.
+SQL dosyaları canlı Odoo veritabanına bağlanmaz ve Odoo kurulumunu değiştirmez. Buradaki yapı, örnek ERP sürecini analiz etmek için hazırlanmış ayrı bir raporlama modelidir.
 
 ## Dosyalar
 
-| Dosya | Amaç |
+| Dosya | Ne için kullanıyorum? |
 | --- | --- |
-| `create_tables.sql` | Türkçe anlamlı tablo ve kolon adlarıyla raporlama modelini oluşturur. |
-| `insert_sample_data.sql` | Tedarikçi, müşteri, ürün, satın alma siparişi, satış siparişi ve stok hareketi verilerini ekler. |
-| `reports.sql` | Satın alma, stok, satış ve karlılık raporlarını içerir. |
-| `powerbi_chart_data.sql` | Power BI görselleri için kullanılabilecek odaklı sorguları içerir. |
+| `create_tables.sql` | Raporlama modelindeki tabloları oluşturmak için. |
+| `insert_sample_data.sql` | Tedarikçi, müşteri, ürün, sipariş ve stok hareketi örnek verilerini eklemek için. |
+| `reports.sql` | Satın alma, stok, satış ve karlılık raporlarını çalıştırmak için. |
+| `powerbi_chart_data.sql` | Power BI görsellerine kaynak olacak daha odaklı sorgular için. |
 
 ## Çalıştırma Sırası
 
@@ -31,7 +31,7 @@ CREATE DATABASE erp_satin_alma_stok;
 
 ## Beklenen Stok Sonucu
 
-Örnek veriler yüklendikten sonra Mevcut Stok Raporu aşağıdaki sonuçları göstermelidir:
+Örnek veriler yüklendikten sonra mevcut stok raporunda şu sonucu bekliyorum:
 
 | Ürün | Mevcut Stok |
 | --- | ---: |
@@ -39,25 +39,25 @@ CREATE DATABASE erp_satin_alma_stok;
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-Diğer ürünler ürün ana verisinde bulunur, ancak örnek işlem setinde stok hareketleri yoktur.
+Diğer ürünler ana veri tablosunda var, fakat örnek işlem setinde onlar için stok hareketi eklemedim.
 
 ## Rapor Listesi
 
-`reports.sql` dosyasında şu raporlar bulunur:
+`reports.sql` içinde şu raporları hazırladım:
 
-- Mevcut Stok Raporu
-- Kritik Stok Raporu
-- Tedarikçi Harcama Raporu
-- En Çok Satan Ürünler Raporu
-- Stok Hareket Geçmişi
-- Satın Alma Siparişi Durum Raporu
-- Satış Siparişi Durum Raporu
-- Ürün Bazlı Brüt Kar Marjı
-- Yenileme Önerisi Raporu
+- Mevcut stok raporu
+- Kritik stok raporu
+- Tedarikçi harcama raporu
+- En çok satan ürünler raporu
+- Stok hareket geçmişi
+- Satın alma siparişi durum raporu
+- Satış siparişi durum raporu
+- Ürün bazlı brüt kar marjı
+- Yenileme önerisi raporu
 
 ## Yenileme Mantığı
 
-Yenileme önerisi şu kurala göre hesaplanır:
+Yenileme önerisini basit bir kuralla hesapladım:
 
 ```text
 Eğer mevcut stok minimum stoktan düşükse:
@@ -66,4 +66,4 @@ Aksi halde:
     önerilen satın alma miktarı = 0
 ```
 
-Bu mantık, satın alma ve stok planlama kararlarını desteklemek için basit ve anlaşılır bir yöntem sağlar.
+Bu mantık, hangi ürünler için yeniden satın alma ihtiyacı olduğunu hızlıca görmek için yeterli bir başlangıç sağlıyor.

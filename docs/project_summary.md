@@ -6,42 +6,42 @@ ERP Satın Alma ve Stok Yönetimi Projesi
 
 ## Genel Bakış
 
-Bu proje, NovaTech Office Supplies adlı örnek bir ofis ekipmanları şirketi için Odoo ERP üzerinde uygulanmış satın alma ve stok yönetimi çalışmasıdır.
+Bu projede NovaTech Office Supplies adlı örnek bir şirket için satın alma ve stok yönetimi süreci hazırladım. Süreci Odoo ERP mantığıyla kurdum, sonra PostgreSQL raporları ve Power BI veri dosyalarıyla destekledim.
 
-Proje; Odoo süreç uygulaması, SAP MM kavram eşleştirmesi, PostgreSQL raporlaması ve Power BI chart data dosyalarını tek bir repoda birleştirir.
+Benim için bu projenin ana fikri şuydu: Bir ERP süreci sadece ekranda sipariş açmaktan ibaret değil. Sipariş, mal kabul, stok hareketi, satış, teslimat ve raporlama adımlarının birbirine nasıl bağlandığını göstermek istedim.
 
 ## İş Problemi
 
-NovaTech Office Supplies, satın alınan ürünlerin stok girişini, müşterilere yapılan teslimatların stok çıkışını ve ürün bazlı mevcut stok durumunu takip etmek istemektedir.
+NovaTech Office Supplies, satın aldığı ürünlerin stoğa girişini, müşterilere yaptığı teslimatların stoktan çıkışını ve ürün bazlı mevcut stok durumunu takip etmek istiyor.
 
-Şirketin yanıtlamak istediği temel sorular:
+Bu senaryoda şu sorulara cevap aradım:
 
-- Hangi ürünlerden stokta kaç adet var?
+- Hangi üründen stokta kaç adet var?
 - Hangi ürünler minimum stok seviyesinin altında?
 - Hangi tedarikçiye ne kadar harcama yapıldı?
 - Hangi ürünler satıldı?
 - Ürün bazlı brüt kar nedir?
-- Hangi ürünler için yenileme önerisi oluşmalı?
+- Hangi ürünler için yeniden satın alma önerisi oluşmalı?
 
-## Uygulanan Çözüm
+## Uyguladığım Çözüm
 
-Projede aşağıdaki çözüm uygulanmıştır:
+Projede şu adımları izledim:
 
-1. Odoo'da tedarikçi, müşteri ve ürün ana verileri oluşturuldu.
-2. Satın alma siparişleri hazırlandı.
-3. Mal kabul işlemleriyle stok girişleri tamamlandı.
-4. Satış siparişi oluşturuldu.
-5. Teslimat doğrulamasıyla stok çıkışı tamamlandı.
-6. Stok hareketleri raporlama modeliyle temsil edildi.
-7. PostgreSQL raporları hazırlandı.
-8. Power BI için chart data dosyaları oluşturuldu.
+1. Odoo'da tedarikçi, müşteri ve ürün ana verilerini oluşturdum.
+2. Satın alma siparişleri hazırladım.
+3. Mal kabul işlemleriyle stok girişlerini tamamladım.
+4. Müşteri için satış siparişi oluşturdum.
+5. Teslimat doğrulamasıyla stok çıkışını tamamladım.
+6. Stok hareketlerini PostgreSQL modelinde temsil ettim.
+7. SQL raporları hazırladım.
+8. Power BI için chart data dosyaları oluşturdum.
 
 ## Çalışmanın Kapsadığı Konular
 
-Bu proje şu becerileri gösterir:
+Bu çalışmada özellikle şu konulara odaklandım:
 
 - ERP ana veri mantığı
-- Satın alma süreci bilgisi
+- Satın alma süreci
 - Mal kabul ve stok hareketi takibi
 - Satış siparişi ve teslimat süreci
 - SAP MM kavramlarıyla süreç eşleştirme
@@ -59,4 +59,4 @@ Bu proje şu becerileri gösterir:
 
 ## Genel Değerlendirme
 
-Proje, iş süreci anlama, ERP uygulama, SQL raporlama ve BI odaklı analiz hazırlama adımlarını birlikte gösterir.
+Bu proje sayesinde satın alma ve stok sürecinin ERP içinde nasıl ilerlediğini, bu verilerin SQL tarafında nasıl raporlandığını ve dashboard için nasıl hazırlanabileceğini tek bir örnek üzerinden toparladım.

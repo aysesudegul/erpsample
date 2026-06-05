@@ -2,20 +2,22 @@
 
 ## Amaç
 
-Bu klasör, Odoo'da uygulanmış ERP satın alma ve stok yönetimi sürecini Power BI dashboard formatında sunmak için hazırlanmıştır.
+Bu klasörde Power BI tarafında kullanmak için hazırladığım veri setlerini ve dashboard fikrini anlattım. Odoo'da kurguladığım satın alma ve stok sürecini Power BI'da daha okunabilir hale getirmek istedim.
 
-Power BI tarafında iki kullanım yolu vardır:
+Power BI için iki kullanım yolu bıraktım:
 
-1. PostgreSQL veritabanına bağlanarak `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak.
+1. PostgreSQL veritabanına bağlanıp `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak.
 2. `powerbi/chart_data/` klasöründeki hazır CSV dosyalarını Power BI'a aktarmak.
 
-## Önerilen Dashboard Sayfaları
+## Dashboard Sayfaları
 
 ### 1. Stok Özeti
 
-Önerilen görseller:
+Bu sayfada stok durumunu hızlıca görmek istedim.
 
-- Ürün bazlı mevcut stok bar chart
+Kullanılabilecek görseller:
+
+- Ürün bazlı mevcut stok grafiği
 - Minimum ve maksimum stok karşılaştırması
 - Kritik stok ürünleri tablosu
 
@@ -26,9 +28,11 @@ Kullanılacak veri:
 
 ### 2. Satın Alma Analizi
 
-Önerilen görseller:
+Bu sayfada tedarikçilerle ilgili satın alma tarafını izlemek istedim.
 
-- Tedarikçi bazlı toplam harcama column chart
+Kullanılabilecek görseller:
+
+- Tedarikçi bazlı toplam harcama grafiği
 - Tedarikçi bazlı satın alma siparişi sayısı
 - Toplam satın alınan miktar kartı
 
@@ -38,9 +42,11 @@ Kullanılacak veri:
 
 ### 3. Satış ve Karlılık
 
-Önerilen görseller:
+Bu sayfada satış miktarını ve ürün bazlı karlılığı birlikte görmek istedim.
 
-- En çok satan ürünler bar chart
+Kullanılabilecek görseller:
+
+- En çok satan ürünler grafiği
 - Ürün bazlı satış geliri
 - Ürün bazlı brüt kar
 - Brüt kar marjı yüzdesi
@@ -52,10 +58,12 @@ Kullanılacak veri:
 
 ### 4. Yenileme Önerileri
 
-Önerilen görseller:
+Bu sayfada hangi ürünler için yeniden satın alma ihtiyacı oluştuğunu göstermek istedim.
+
+Kullanılabilecek görseller:
 
 - Yenileme önerisi tablosu
-- Önerilen satın alma miktarı bar chart
+- Önerilen satın alma miktarı grafiği
 - Kritik ürün kartları
 
 Kullanılacak veri:
@@ -64,6 +72,8 @@ Kullanılacak veri:
 - `kritik_stok.csv`
 
 ## CSV ile Power BI Kullanımı
+
+CSV dosyalarıyla çalışmak için şu adımları kullandım:
 
 1. Power BI Desktop açılır.
 2. Get Data > Text/CSV seçilir.
@@ -79,6 +89,8 @@ Kullanılacak veri:
 
 ## PostgreSQL ile Power BI Kullanımı
 
+PostgreSQL bağlantısı kullanılacaksa şu sıra izlenir:
+
 1. PostgreSQL içinde SQL dosyaları çalıştırılır:
    - `sql/create_tables.sql`
    - `sql/insert_sample_data.sql`
@@ -88,4 +100,4 @@ Kullanılacak veri:
 
 ## Dashboard Özeti
 
-Bu dashboard, Odoo'da uygulanan satın alma ve stok yönetimi sürecinin raporlama tarafını gösterir. Stok durumu, kritik ürünler, tedarikçi harcamaları, satış performansı, brüt kar ve yenileme ihtiyacı tek ekranda izlenebilir hale gelir.
+Bu dashboard ile stok durumu, kritik ürünler, tedarikçi harcamaları, satış performansı, brüt kar ve yenileme ihtiyacını tek yerden takip etmeyi hedefledim.

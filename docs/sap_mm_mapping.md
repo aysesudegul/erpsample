@@ -2,7 +2,7 @@
 
 ## Amaç
 
-Bu doküman, Odoo üzerinde uygulanan satın alma ve stok yönetimi sürecini SAP MM kavramlarıyla eşleştirir. Amaç, projedeki iş mantığının farklı ERP sistemlerinde de geçerli olduğunu göstermektir.
+Bu dokümanda Odoo üzerinde kurguladığım satın alma ve stok yönetimi sürecini SAP MM kavramlarıyla eşleştirdim. Amacım, aynı iş mantığının farklı ERP sistemlerinde nasıl benzer kavramlarla ilerlediğini göstermekti.
 
 ## Kavram Eşleştirmesi
 
@@ -10,10 +10,10 @@ Bu doküman, Odoo üzerinde uygulanan satın alma ve stok yönetimi sürecini SA
 | --- | --- | --- |
 | Ürün | Material Master | Ürün veya malzeme ana verisini temsil eder. |
 | Tedarikçi | Vendor Master / Business Partner | Satın alma sürecinde kullanılan tedarikçi bilgisidir. |
-| Satın Alma Siparişi | Purchase Order | Tedarikçiye verilen resmi satın alma belgesidir. |
+| Satın Alma Siparişi | Purchase Order | Tedarikçiye verilen satın alma belgesidir. |
 | Satın Alma Siparişi Kalemi | PO Item | Ürün, miktar ve fiyat detayını içerir. |
 | Mal Kabul | Goods Receipt | Satın alınan ürünün stoğa girişini gösterir. |
-| Stok Hareketi | Material Document / Movement Type | Stok miktarında oluşan artış veya azalışı kayıt altına alır. |
+| Stok Hareketi | Material Document / Movement Type | Stok miktarındaki artış veya azalışı kayıt altına alır. |
 | Satış Teslimatı | Goods Issue / Outbound Movement | Ürünün müşteriye teslim edilmesiyle stoktan çıkışını temsil eder. |
 | Minimum Stok | Reorder Point | Yenileme ihtiyacını belirlemek için kullanılan eşiktir. |
 | Maksimum Stok | Target Stock Level | Önerilen satın alma miktarını hesaplamak için kullanılır. |
@@ -21,7 +21,7 @@ Bu doküman, Odoo üzerinde uygulanan satın alma ve stok yönetimi sürecini SA
 
 ## SAP MM Süreç Benzerliği
 
-Proje, temel SAP MM satın alma döngüsüyle benzer bir akışa sahiptir:
+Odoo ile çalışmış olsam da süreç temel SAP MM satın alma döngüsüne benziyor:
 
 1. Ana veri hazırlanır.
 2. Satın alma siparişi oluşturulur.
@@ -30,7 +30,7 @@ Proje, temel SAP MM satın alma döngüsüyle benzer bir akışa sahiptir:
 5. Stok hareketleri izlenir.
 6. Kritik stok ve yenileme ihtiyacı analiz edilir.
 
-## Gösterilen SAP MM Terimleri
+## Kullandığım SAP MM Terimleri
 
 - Material Master
 - Vendor Master
@@ -45,4 +45,4 @@ Proje, temel SAP MM satın alma döngüsüyle benzer bir akışa sahiptir:
 
 ## Süreç Değerlendirmesi
 
-Bu eşleştirme, Odoo üzerinde yapılan çalışmanın SAP MM danışmanlığı için de anlamlı olduğunu gösterir. Master data, satın alma belgesi, mal kabul ve stok hareketi kavramları ERP sistemlerinde ortak iş mantığına sahiptir.
+Bu eşleştirme bana şunu gösterdi: ERP sistemleri farklı olsa bile ana veri, satın alma belgesi, mal kabul ve stok hareketi gibi kavramlar aynı iş ihtiyacına hizmet ediyor. Bu yüzden Odoo üzerinden hazırlanan örnek, SAP MM tarafındaki mantığı anlamak için de kullanılabiliyor.

@@ -2,17 +2,15 @@
 
 ## Amaç
 
-Bu rehber, Odoo üzerinde uygulanmış ERP satın alma ve stok yönetimi çalışmasının nasıl takip edileceğini açıklar.
-
-Proje üç ana parçadan oluşur:
+Bu rehberde projeyi hangi sırayla takip ettiğimi anlattım. Proje üç ana parçadan oluşuyor:
 
 1. Odoo ERP iş süreci
 2. PostgreSQL raporlama modeli
 3. Power BI dashboard veri setleri
 
-## Kullanılan Odoo Modülleri
+## Kullandığım Odoo Modülleri
 
-Odoo tarafında aşağıdaki modüller kullanılmıştır:
+Odoo tarafında şu modülleri baz aldım:
 
 - Contacts
 - Purchase
@@ -21,7 +19,7 @@ Odoo tarafında aşağıdaki modüller kullanılmıştır:
 
 ## 1. Tedarikçi Ana Verileri
 
-Odoo Contacts içinde aşağıdaki tedarikçiler oluşturulmuştur:
+Önce Contacts modülünde tedarikçileri oluşturdum:
 
 - Anadolu Electronics
 - OfficePro Supply
@@ -31,7 +29,7 @@ Odoo Contacts içinde aşağıdaki tedarikçiler oluşturulmuştur:
 
 ## 2. Müşteri Ana Verileri
 
-Odoo Contacts içinde aşağıdaki müşteriler oluşturulmuştur:
+Aynı şekilde müşteri kayıtlarını da hazırladım:
 
 - ABC Consulting
 - Mavi Software
@@ -41,7 +39,7 @@ Odoo Contacts içinde aşağıdaki müşteriler oluşturulmuştur:
 
 ## 3. Ürün Ana Verileri
 
-Odoo'da aşağıdaki ürünler maliyet ve satış fiyatı bilgileriyle oluşturulmuştur:
+Ürünleri maliyet ve satış fiyatı bilgileriyle birlikte tanımladım. Ayrıca minimum ve maksimum stok seviyelerini de ekledim.
 
 | Ürün | Maliyet | Satış Fiyatı | Minimum Stok | Maksimum Stok |
 | --- | ---: | ---: | ---: | ---: |
@@ -56,39 +54,39 @@ Odoo'da aşağıdaki ürünler maliyet ve satış fiyatı bilgileriyle oluşturu
 
 ## 4. PO-001 Satın Alma Siparişi
 
-PO-001 aşağıdaki bilgilerle oluşturulmuştur:
+İlk satın alma siparişini Anadolu Electronics için oluşturdum.
 
 - Tedarikçi: Anadolu Electronics
 - Wireless Mouse: 30 adet, birim maliyet 150
 - Mechanical Keyboard: 20 adet, birim maliyet 300
 - 24-inch Monitor: 10 adet, birim maliyet 3000
 
-Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
+Siparişi onayladıktan sonra mal kabul adımıyla ürünleri stoğa aldım.
 
 ## 5. SO-001 Satış Siparişi
 
-SO-001 aşağıdaki bilgilerle oluşturulmuştur:
+Satış tarafında ABC Consulting için örnek bir satış siparişi oluşturdum.
 
 - Müşteri: ABC Consulting
 - Wireless Mouse: 5 adet, birim fiyat 250
 - Mechanical Keyboard: 3 adet, birim fiyat 500
 - 24-inch Monitor: 2 adet, birim fiyat 4500
 
-Sipariş onaylanmış ve teslimat doğrulanmıştır.
+Siparişi onaylayıp teslimatı doğruladığımda ürünlerin stoktan düşmesini bekledim.
 
 ## 6. PO-002 Satın Alma Siparişi
 
-PO-002 aşağıdaki bilgilerle oluşturulmuştur:
+İkinci satın alma siparişini OfficePro Supply için hazırladım.
 
 - Tedarikçi: OfficePro Supply
 - Wireless Mouse: 20 adet, birim maliyet 150
 - Mechanical Keyboard: 10 adet, birim maliyet 300
 
-Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
+Bu sipariş de mal kabul sonrası stok miktarını artırıyor.
 
 ## 7. Stok Sonucu
 
-Örnek işlemler sonrası beklenen mevcut stok:
+Örnek işlemlerden sonra beklediğim stok sonucu şu şekilde:
 
 | Ürün | Mevcut Stok |
 | --- | ---: |
@@ -98,22 +96,22 @@ Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
 
 ## 8. PostgreSQL Raporlarını Çalıştırma
 
-pgAdmin veya başka bir PostgreSQL aracında dosyaları şu sırayla çalıştırın:
+PostgreSQL tarafında dosyaları şu sırayla çalıştırdım:
 
 1. `sql/create_tables.sql`
 2. `sql/insert_sample_data.sql`
 3. `sql/reports.sql`
 
-Bu raporlar mevcut stok, kritik stok, tedarikçi harcaması, satış performansı, brüt kar ve yenileme önerilerini gösterir.
+Bu raporlarla mevcut stok, kritik stok, tedarikçi harcaması, satış performansı, brüt kar ve yenileme önerisi sonuçlarını görebiliyorum.
 
 ## 9. Power BI Dashboard Hazırlama
 
-Power BI için iki seçenek vardır:
+Power BI tarafı için iki yol bıraktım:
 
 1. PostgreSQL bağlantısı kurup `sql/powerbi_chart_data.sql` sorgularını kullanmak
 2. `powerbi/chart_data/` klasöründeki CSV dosyalarını içe aktarmak
 
-Önerilen Power BI sayfaları:
+Dashboard sayfalarını şu başlıklarla düşündüm:
 
 - Stok Özeti
 - Satın Alma Analizi

@@ -1,5 +1,5 @@
--- ERP satın alma ve stok yönetimi raporlama modeli
--- PostgreSQL raporlama veritabanı tablo yapısı
+-- Bu dosyada satın alma ve stok sürecini raporlamak için kullandığım tablo yapısını oluşturdum.
+-- Model canlı Odoo veritabanına bağlı değil; örnek ERP sürecini PostgreSQL tarafında temsil ediyor.
 
 DROP TABLE IF EXISTS stok_hareketleri;
 DROP TABLE IF EXISTS satis_siparisi_kalemleri;
