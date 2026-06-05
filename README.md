@@ -8,6 +8,8 @@ Sadece ERP adımlarını yazmakla kalmadım. Bu sürecin raporlanabilir olması 
 
 Not: Bu repo doğrudan canlı bir Odoo veritabanına bağlanmaz. Odoo'da yapılan süreci temsil eden örnek PostgreSQL tabloları, SQL raporları ve Power BI veri dosyaları içerir.
 
+Web üzerinden gezilebilen küçük simulator uygulamasını da `web-app/` klasörüne ekledim. Ana dokümanlar, SQL dosyaları ve dashboard verileri aynı repo içinde duruyor.
+
 İş Senaryosu
 
 Örnek şirket olarak NovaTech Office Supplies adında küçük bir ofis ekipmanları şirketi kullandım. Bu şirket tedarikçilerden ürün satın alıyor, ürünleri stokta tutuyor ve kurumsal müşterilere satış yapıyor.
@@ -37,6 +39,8 @@ Bu senaryoda takip ettiğim ana süreçler:
 - GitHub
 - Markdown
 - Mermaid diyagramları
+- React
+- Vite
 
 Odoo'da Kurguladığım Süreç
 
@@ -134,27 +138,34 @@ Bu yüzden projeyi sadece Odoo örneği gibi değil, genel ERP satın alma ve st
 │       ├── en_cok_satan_urunler.csv
 │       ├── brut_kar_marji.csv
 │       └── yenileme_onerileri.csv
-└── sql/
-    ├── create_tables.sql
-    ├── insert_sample_data.sql
-    ├── reports.sql
-    ├── powerbi_chart_data.sql
-    └── README.md
+├── sql/
+│   ├── create_tables.sql
+│   ├── insert_sample_data.sql
+│   ├── reports.sql
+│   ├── powerbi_chart_data.sql
+│   └── README.md
+└── web-app/
+    ├── README.md
+    ├── package.json
+    ├── index.html
+    └── src/
 ```
 
-SQL Dosyaları Nasıl Kullanılır?
+## Web Uygulaması
 
-1. PostgreSQL içinde yeni bir veritabanı oluşturun. Örnek: `erp_satin_alma_stok`.
-2. pgAdmin veya başka bir PostgreSQL aracı açın.
-3. Önce `sql/create_tables.sql` dosyasını çalıştırın.
-4. Sonra `sql/insert_sample_data.sql` dosyasını çalıştırın.
-5. Raporlar için `sql/reports.sql` dosyasındaki sorguları çalıştırın.
-6. Power BI grafikleri için `sql/powerbi_chart_data.sql` dosyasındaki sorguları veya hazır CSV dosyalarını kullanın.
+Simulator ekranını çalıştırmak için:
 
-Örnek işlemlerden sonra beklenen stok sonuçları:
+```bash
+cd web-app
+npm install
+npm run dev
+```
 
-| Ürün | Mevcut Stok |
-| --- | ---: |
-| Wireless Mouse | 45 |
-| Mechanical Keyboard | 27 |
-| 24-inch Monitor | 8 |
+Uygulama açıldığında satın alma, satış, stok hareketi, kritik stok ve SAP MM eşleştirme ekranlarını gezebilirsin.
+
+## Dosyalar
+
+- `docs/`: süreç, test ve SAP MM notları
+- `sql/`: PostgreSQL tablo, örnek veri ve rapor sorguları
+- `powerbi/chart_data/`: dashboard için CSV dosyaları
+- `web-app/`: tarayıcıda çalışan ERP simulator uygulaması
