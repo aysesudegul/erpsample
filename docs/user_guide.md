@@ -94,24 +94,13 @@ Bu sipariş de mal kabul sonrası stok miktarını artırıyor.
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
 
-## 8. PostgreSQL Raporlarını Çalıştırma
+## 8. PostgreSQL Raporları
 
-PostgreSQL tarafında dosyaları şu sırayla çalıştırdım:
+PostgreSQL tarafında tablo yapısı, örnek veriler ve rapor sorguları ayrı dosyalarda duruyor. Bu raporlar mevcut stok, kritik stok, tedarikçi harcaması, satış performansı, brüt kar ve yenileme önerisi sonuçlarını gösteriyor.
 
-1. `sql/create_tables.sql`
-2. `sql/insert_sample_data.sql`
-3. `sql/reports.sql`
+## 9. Dashboard Verileri
 
-Bu raporlarla mevcut stok, kritik stok, tedarikçi harcaması, satış performansı, brüt kar ve yenileme önerisi sonuçlarını görebiliyorum.
-
-## 9. Power BI Dashboard Hazırlama
-
-Power BI tarafı için iki yol bıraktım:
-
-1. PostgreSQL bağlantısı kurup `sql/powerbi_chart_data.sql` sorgularını kullanmak
-2. `powerbi/chart_data/` klasöründeki CSV dosyalarını içe aktarmak
-
-Dashboard sayfalarını şu başlıklarla düşündüm:
+Dashboard tarafını şu başlıklarla düşündüm:
 
 - Stok Özeti
 - Satın Alma Analizi

@@ -25,7 +25,7 @@ Bu senaryoda şu sorulara cevap aradım:
 
 ## Uyguladığım Çözüm
 
-Projede şu adımları izledim:
+Projede yaptıklarım:
 
 1. Odoo'da tedarikçi, müşteri ve ürün ana verilerini oluşturdum.
 2. Satın alma siparişleri hazırladım.

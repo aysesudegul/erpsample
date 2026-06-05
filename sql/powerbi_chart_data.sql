@@ -1,5 +1,5 @@
--- Bu dosyada Power BI grafiklerinde kullanmak için ayırdığım sorgular var.
--- Amaç, dashboard tarafında doğrudan kullanılabilecek daha sade veri çıktıları üretmek.
+-- Bu dosyada dashboard grafiklerine kaynak olacak sorgular var.
+-- Sorgular stok, satın alma, satış ve karlılık verilerini ayrı çıktılar halinde topluyor.
 
 -- Power BI Görseli 1: Mevcut Stok Bar Chart
 SELECT

@@ -12,7 +12,7 @@ SQL dosyaları canlı Odoo veritabanına bağlanmaz ve Odoo kurulumunu değişti
 | --- | --- |
 | `create_tables.sql` | Raporlama modelindeki tabloları oluşturmak için. |
 | `insert_sample_data.sql` | Tedarikçi, müşteri, ürün, sipariş ve stok hareketi örnek verilerini eklemek için. |
-| `reports.sql` | Satın alma, stok, satış ve karlılık raporlarını çalıştırmak için. |
+| `reports.sql` | Satın alma, stok, satış ve karlılık raporları. |
 | `powerbi_chart_data.sql` | Power BI görsellerine kaynak olacak daha odaklı sorgular için. |
 
 ## Çalıştırma Sırası

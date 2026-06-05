@@ -136,7 +136,7 @@ Bu projeyi başarılı saymam için şu sonuçlara baktım:
 - Süreç anlaşılır şekilde dokümante edildi.
 - PostgreSQL dosyaları tablo yapısını ve örnek verileri oluşturuyor.
 - Stok raporları stok hareketlerinden hesaplanıyor.
-- Power BI için kullanılabilecek dashboard verileri hazır.
+- Power BI tarafı için dashboard verileri hazır.
 - Örnek işlem sonrası stok değerleri beklenen sonucu veriyor:
   - Wireless Mouse: 45
   - Mechanical Keyboard: 27

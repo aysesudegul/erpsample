@@ -4,11 +4,11 @@ Proje Amacı
 
 Bu projede küçük bir ofis ekipmanları şirketi için satın alma, stok ve satış sürecini uçtan uca kurguladım. Süreci Odoo ERP mantığına göre düşündüm; tedarikçi, müşteri ve ürün bilgilerini oluşturdum, satın alma siparişi ve mal kabul adımlarını tamamladım, ardından satış ve teslimat sonrası stok çıkışını takip ettim.
 
-Sadece ERP adımlarını yazmakla kalmadım. Bu sürecin raporlanabilir olması için ayrı bir PostgreSQL modeli hazırladım ve Power BI tarafında kullanılabilecek CSV veri setleri ekledim. Böylece süreç, veri tabanı ve dashboard tarafı aynı örnek senaryo içinde birbirine bağlandı.
+Sadece ERP adımlarını yazmakla kalmadım. Bu sürecin raporlanabilir olması için ayrı bir PostgreSQL modeli hazırladım ve Power BI tarafı için CSV veri setleri ekledim. Böylece süreç, veri tabanı ve dashboard tarafı aynı örnek senaryo içinde birbirine bağlandı.
 
 Not: Bu repo doğrudan canlı bir Odoo veritabanına bağlanmaz. Odoo'da yapılan süreci temsil eden örnek PostgreSQL tabloları, SQL raporları ve Power BI veri dosyaları içerir.
 
-Web üzerinden gezilebilen küçük simulator uygulamasını da `web-app/` klasörüne ekledim. Ana dokümanlar, SQL dosyaları ve dashboard verileri aynı repo içinde duruyor.
+React tabanlı simulator uygulaması `web-app/` klasöründe duruyor. Ana dokümanlar, SQL dosyaları ve dashboard verileri aynı repo içinde toplandı.
 
 İş Senaryosu
 
@@ -44,7 +44,7 @@ Bu senaryoda takip ettiğim ana süreçler:
 
 Odoo'da Kurguladığım Süreç
 
-Projede Odoo tarafını şu sırayla ele aldım:
+Odoo tarafında yaptıklarım:
 
 1. Önce tedarikçi kayıtlarını oluşturdum.
 2. Sonra müşteri kayıtlarını hazırladım.
@@ -84,7 +84,7 @@ Stok hesabını `stok_hareketleri` tablosu üzerinden yaptım. Mal kabul hareket
 
 ## Power BI Dashboard Entegrasyonu
 
-Power BI için ayrı CSV dosyaları hazırladım. Bu dosyalar dashboard üzerinde stok, satın alma, satış ve karlılık analizlerini göstermek için kullanılabilir.
+Power BI için ayrı CSV dosyaları hazırladım. Bu dosyalar stok, satın alma, satış ve karlılık analizlerine kaynak olacak şekilde düzenlendi.
 
 Dashboard tarafında hedeflediğim görseller:
 
@@ -96,10 +96,10 @@ Dashboard tarafında hedeflediğim görseller:
 - Yenileme önerileri tablosu
 - Stok hareketleri zaman çizelgesi
 
-Power BI için iki kullanım yolu bıraktım:
+Power BI tarafındaki veri kaynakları:
 
-1. PostgreSQL'e bağlanıp `sql/powerbi_chart_data.sql` içindeki sorguları kullanmak
-2. `powerbi/chart_data/` klasöründeki hazır CSV dosyalarını Power BI'a aktarmak
+1. `sql/powerbi_chart_data.sql` içindeki PostgreSQL sorguları
+2. `powerbi/chart_data/` klasöründeki hazır CSV dosyaları
 
 SAP MM ile Bağlantısı
 
@@ -150,18 +150,6 @@ Bu yüzden projeyi sadece Odoo örneği gibi değil, genel ERP satın alma ve st
     ├── index.html
     └── src/
 ```
-
-## Web Uygulaması
-
-Simulator ekranını çalıştırmak için:
-
-```bash
-cd web-app
-npm install
-npm run dev
-```
-
-Uygulama açıldığında satın alma, satış, stok hareketi, kritik stok ve SAP MM eşleştirme ekranlarını gezebilirsin.
 
 ## Dosyalar
 

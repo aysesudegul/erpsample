@@ -29,7 +29,7 @@ Bu dosyada projedeki ana adımları kontrol etmek için kullandığım test sena
 | Test Amacı | Ürünlerin maliyet, satış fiyatı, minimum stok ve maksimum stok bilgileriyle hazırlanmasını kontrol etmek. |
 | Test Verisi | Wireless Mouse, Mechanical Keyboard, 24-inch Monitor |
 | Adımlar | Odoo Products ekranında ürün ana verilerini oluştur. |
-| Beklenen Sonuç | Ürünler satın alma, satış ve stok işlemlerinde kullanılabilir. |
+| Beklenen Sonuç | Ürünler satın alma, satış ve stok işlemlerine dahil olur. |
 | Durum | Tamamlandı |
 
 ## Test Senaryosu 4: PO-001 Satın Alma Siparişi
