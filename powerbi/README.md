@@ -86,6 +86,6 @@ Kullanılacak veri:
 3. Veritabanı bağlantısı yapılır.
 4. `sql/powerbi_chart_data.sql` içindeki sorgular Power BI'a query olarak eklenir.
 
-## Dashboard Sunum Mesajı
+## Dashboard Özeti
 
 Bu dashboard, Odoo'da uygulanan satın alma ve stok yönetimi sürecinin raporlama tarafını gösterir. Stok durumu, kritik ürünler, tedarikçi harcamaları, satış performansı, brüt kar ve yenileme ihtiyacı tek ekranda izlenebilir hale gelir.

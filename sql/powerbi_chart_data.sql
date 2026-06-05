@@ -1,4 +1,4 @@
--- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- ERP satın alma ve stok yönetimi Power BI sorguları
 -- Power BI grafiklerinde kullanılabilecek odaklı sorgular
 
 -- Power BI Görseli 1: Mevcut Stok Bar Chart

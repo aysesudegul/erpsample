@@ -1,10 +1,10 @@
-ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+ERP Satın Alma ve Stok Yönetimi Projesi
 
 Proje Amacı
 
-Bu repo, Odoo ERP üzerinde uygulanmış uçtan uca bir satın alma ve stok yönetimi portföy projesidir. Projede tedarikçi, müşteri ve ürün ana verileri oluşturulmuş; satın alma siparişi, mal kabul, satış siparişi, teslimat ve stok hareketi süreçleri tamamlanmıştır.
+Bu repo, Odoo ERP üzerinde uygulanmış uçtan uca bir satın alma ve stok yönetimi çalışmasını içerir. Projede tedarikçi, müşteri ve ürün ana verileri oluşturulmuş; satın alma siparişi, mal kabul, satış siparişi, teslimat ve stok hareketi süreçleri tamamlanmıştır.
 
-Çalışma, Odoo'da yürütülen ERP sürecini PostgreSQL raporları ve Power BI dashboard veri setleriyle destekler. Amaç, junior SAP MM danışmanı, ERP danışmanı, ERP destek uzmanı veya iş analisti pozisyonları için gösterilebilir, düzenli ve profesyonel bir GitHub portföy çıktısı hazırlamaktır.
+Çalışma, Odoo'da yürütülen ERP sürecini PostgreSQL raporları ve Power BI dashboard veri setleriyle destekler. Amaç, satın alma ve stok sürecinin ERP içinde nasıl ilerlediğini ve raporlama tarafına nasıl taşındığını göstermektir.
 
 Not: Bu repo doğrudan Odoo veritabanına bağlanmaz ve yerel Odoo kurulumunu değiştirmez. Odoo'da uygulanan iş süreci, ayrıca hazırlanmış PostgreSQL raporlama tabloları ve Power BI chart data dosyalarıyla dokümante edilmiştir.
 
@@ -40,7 +40,7 @@ NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirket. Şirket 
 
 Odoo'da Uygulanan Süreçler
 
-Bu portföy projesinde Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır:
+Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır:
 
 1. Tedarikçi ana verilerinin oluşturulması
 2. Müşteri ana verilerinin oluşturulması
@@ -55,7 +55,7 @@ Bu portföy projesinde Odoo üzerinde aşağıdaki ERP akışı uygulanmıştır
 11. Kritik stok ve yenileme analizi
 12. SQL ve Power BI raporlama çıktılarının hazırlanması
 
-doo Süreç Özeti
+Odoo Süreç Özeti
 
 Odoo tarafında süreç Contacts, Purchase, Inventory ve Sales modülleriyle yürütülmüştür.
 
@@ -65,7 +65,7 @@ Bu akış, ERP sistemlerinde satın alma ve stok yönetiminin nasıl birbirine b
 
 PostgreSQL Raporlama
 
-SQL klasörü, Odoo'da uygulanan süreci temsil eden ayrı bir PostgreSQL raporlama modeli içerir. Bu yapı Odoo veritabanına bağlanmadan, portföy ve analiz amacıyla hazırlanmıştır.
+SQL klasörü, Odoo'da uygulanan süreci temsil eden ayrı bir PostgreSQL raporlama modeli içerir. Bu yapı Odoo veritabanına bağlanmadan, analiz ve raporlama amacıyla hazırlanmıştır.
 
 Hazırlanan SQL raporları:
 
@@ -83,7 +83,7 @@ Stok hesapları `stok_hareketleri` tablosu üzerinden yapılır. Mal kabul harek
 
 ## Power BI Dashboard Entegrasyonu
 
-Power BI klasörü, bu projeyi bir BI portföy çıktısına dönüştürmek için hazırlanmıştır.
+Power BI klasörü, dashboard görsellerinde kullanılacak veri setlerini içerir.
 
 Power BI tarafında hedeflenen dashboard görselleri:
 
@@ -113,7 +113,7 @@ Proje Odoo üzerinde uygulanmış olsa da süreç SAP MM kavramlarıyla doğruda
 | Minimum ve maksimum stok | Reorder Point / Replenishment Planning |
 | Satın alma ve stok raporları | Procurement and Inventory Analytics |
 
-Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir portföy örneği olarak sunulabilir.
+Bu nedenle proje, SAP MM tarafındaki satın alma ve stok yönetimi kavramlarıyla ilişkilendirilebilir.
 
 ## Repo Yapısı
 
@@ -126,8 +126,7 @@ Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir p
 │   ├── sap_mm_mapping.md
 │   ├── test_cases.md
 │   ├── user_guide.md
-│   ├── project_summary.md
-│   └── portfolio_pitch.md
+│   └── project_summary.md
 ├── powerbi/
 │   ├── README.md
 │   └── chart_data/
@@ -137,14 +136,12 @@ Bu nedenle proje, SAP MM ve ERP danışmanlığına geçiş için güçlü bir p
 │       ├── en_cok_satan_urunler.csv
 │       ├── brut_kar_marji.csv
 │       └── yenileme_onerileri.csv
-├── sql/
+└── sql/
 │   ├── create_tables.sql
 │   ├── insert_sample_data.sql
 │   ├── reports.sql
 │   ├── powerbi_chart_data.sql
 │   └── README.md
-└── screenshots/
-    └── README.md
 ```
 
 SQL Dosyaları Nasıl Kullanılır?
@@ -163,22 +160,3 @@ SQL Dosyaları Nasıl Kullanılır?
 | Wireless Mouse | 45 |
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
-
-Sunum Kanıtları İçin Ekran Görüntüleri
-
-Portföy sunumunu güçlendirmek için `screenshots/` klasörüne aşağıdaki Odoo ve rapor çıktıları eklenebilir:
-
-- Tedarikçi ana veri ekranı
-- Müşteri ana veri ekranı
-- Ürün ana veri ekranı
-- PO-001 satın alma siparişi
-- PO-001 mal kabul ekranı
-- Odoo stok hareketleri
-- SO-001 satış siparişi
-- SO-001 teslimat doğrulama ekranı
-- PostgreSQL mevcut stok raporu
-- Power BI dashboard ekranı
-
-
-
-

@@ -8,7 +8,7 @@
 | Test Verisi | Anadolu Electronics, OfficePro Supply |
 | Adımlar | Odoo Contacts içinde tedarikçi kayıtlarını oluştur. |
 | Beklenen Sonuç | Tedarikçiler satın alma siparişi ekranında seçilebilir. |
-| Durum | Portföy senaryosunda tamamlandı |
+| Durum | Tamamlandı |
 
 ## Test Senaryosu 2: Müşteri Ana Verisi
 
@@ -18,7 +18,7 @@
 | Test Verisi | ABC Consulting |
 | Adımlar | Odoo Contacts içinde müşteri kaydını oluştur. |
 | Beklenen Sonuç | Müşteri satış siparişi ekranında seçilebilir. |
-| Durum | Portföy senaryosunda tamamlandı |
+| Durum | Tamamlandı |
 
 ## Test Senaryosu 3: Ürün Ana Verisi
 
@@ -28,7 +28,7 @@
 | Test Verisi | Wireless Mouse, Mechanical Keyboard, 24-inch Monitor |
 | Adımlar | Odoo Products ekranında ürün ana verilerini oluştur. |
 | Beklenen Sonuç | Ürünler satın alma, satış ve stok işlemlerinde kullanılabilir. |
-| Durum | Portföy senaryosunda tamamlandı |
+| Durum | Tamamlandı |
 
 ## Test Senaryosu 4: PO-001 Satın Alma Siparişi
 

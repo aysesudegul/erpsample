@@ -4,7 +4,7 @@
 
 NovaTech Office Supplies, ofis ekipmanları satan küçük bir şirkettir. Şirket tedarikçilerden ürün satın alır, ürünleri stokta tutar ve kurumsal müşterilere satış yapar.
 
-Bu portföy projesinde süreç Odoo ERP üzerinde uygulanmış, ardından PostgreSQL ve Power BI çıktılarıyla raporlanabilir hale getirilmiştir.
+Bu çalışmada süreç Odoo ERP üzerinde uygulanmış, ardından PostgreSQL ve Power BI çıktılarıyla raporlanabilir hale getirilmiştir.
 
 ## İş Hedefleri
 
@@ -133,7 +133,7 @@ PostgreSQL ve Power BI tarafında aşağıdaki analizler hazırlanmıştır:
 Proje başarılı kabul edilir, çünkü:
 
 - Odoo üzerinde uçtan uca satın alma ve stok süreci uygulanmıştır.
-- Süreç profesyonel portföy dokümantasyonu haline getirilmiştir.
+- Süreç düzenli şekilde dokümante edilmiştir.
 - PostgreSQL dosyaları raporlama tablolarını ve örnek verileri oluşturur.
 - Stok raporları stok hareketlerinden hesaplanır.
 - Power BI için dashboard verileri hazırlanmıştır.

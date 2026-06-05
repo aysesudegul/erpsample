@@ -1,4 +1,4 @@
--- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- ERP satın alma ve stok yönetimi raporlama modeli
 -- PostgreSQL raporlama veritabanı tablo yapısı
 
 DROP TABLE IF EXISTS stok_hareketleri;

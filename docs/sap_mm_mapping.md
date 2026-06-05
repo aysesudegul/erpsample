@@ -43,6 +43,6 @@ Proje, temel SAP MM satın alma döngüsüyle benzer bir akışa sahiptir:
 - Reorder Point
 - Replenishment Planning
 
-## Portföy Değeri
+## Süreç Değerlendirmesi
 
 Bu eşleştirme, Odoo üzerinde yapılan çalışmanın SAP MM danışmanlığı için de anlamlı olduğunu gösterir. Master data, satın alma belgesi, mal kabul ve stok hareketi kavramları ERP sistemlerinde ortak iş mantığına sahiptir.

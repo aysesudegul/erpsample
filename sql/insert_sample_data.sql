@@ -1,4 +1,4 @@
--- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- ERP satın alma ve stok yönetimi örnek veri seti
 -- PostgreSQL raporlama modeli için örnek veri seti
 
 INSERT INTO tedarikciler (tedarikci_adi) VALUES

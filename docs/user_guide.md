@@ -2,7 +2,7 @@
 
 ## Amaç
 
-Bu rehber, Odoo üzerinde uygulanmış ERP satın alma ve stok yönetimi portföy projesinin nasıl takip edileceğini açıklar.
+Bu rehber, Odoo üzerinde uygulanmış ERP satın alma ve stok yönetimi çalışmasının nasıl takip edileceğini açıklar.
 
 Proje üç ana parçadan oluşur:
 
@@ -29,10 +29,6 @@ Odoo Contacts içinde aşağıdaki tedarikçiler oluşturulmuştur:
 - Global Office Supplier
 - Akdeniz Computer Systems
 
-Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
-
-- Tedarikçi liste ekranı veya tedarikçi formu
-
 ## 2. Müşteri Ana Verileri
 
 Odoo Contacts içinde aşağıdaki müşteriler oluşturulmuştur:
@@ -42,10 +38,6 @@ Odoo Contacts içinde aşağıdaki müşteriler oluşturulmuştur:
 - Delta Academy
 - Northwind Logistics
 - Bright Future Education
-
-Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
-
-- Müşteri liste ekranı veya müşteri formu
 
 ## 3. Ürün Ana Verileri
 
@@ -62,10 +54,6 @@ Odoo'da aşağıdaki ürünler maliyet ve satış fiyatı bilgileriyle oluşturu
 | Office Chair | 1200 | 2200 | 10 | 25 |
 | Barcode Scanner | 2500 | 3900 | 5 | 15 |
 
-Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
-
-- Ürün listesi veya ürün formu
-
 ## 4. PO-001 Satın Alma Siparişi
 
 PO-001 aşağıdaki bilgilerle oluşturulmuştur:
@@ -76,11 +64,6 @@ PO-001 aşağıdaki bilgilerle oluşturulmuştur:
 - 24-inch Monitor: 10 adet, birim maliyet 3000
 
 Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
-
-Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
-
-- PO-001 satın alma siparişi
-- PO-001 mal kabul ekranı
 
 ## 5. SO-001 Satış Siparişi
 
@@ -93,11 +76,6 @@ SO-001 aşağıdaki bilgilerle oluşturulmuştur:
 
 Sipariş onaylanmış ve teslimat doğrulanmıştır.
 
-Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
-
-- SO-001 satış siparişi
-- SO-001 teslimat doğrulama ekranı
-
 ## 6. PO-002 Satın Alma Siparişi
 
 PO-002 aşağıdaki bilgilerle oluşturulmuştur:
@@ -108,10 +86,6 @@ PO-002 aşağıdaki bilgilerle oluşturulmuştur:
 
 Sipariş onaylanmış ve mal kabul işlemi yapılmıştır.
 
-Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
-
-- PO-002 satın alma siparişi
-
 ## 7. Stok Sonucu
 
 Örnek işlemler sonrası beklenen mevcut stok:
@@ -121,12 +95,6 @@ Sunum kanıtı olarak eklenebilecek ekran görüntüsü:
 | Wireless Mouse | 45 |
 | Mechanical Keyboard | 27 |
 | 24-inch Monitor | 8 |
-
-Sunum kanıtı olarak eklenebilecek ekran görüntüleri:
-
-- Odoo stok miktarı
-- Odoo stok hareketleri
-- PostgreSQL mevcut stok raporu
 
 ## 8. PostgreSQL Raporlarını Çalıştırma
 
@@ -151,7 +119,3 @@ Power BI için iki seçenek vardır:
 - Satın Alma Analizi
 - Satış ve Karlılık
 - Yenileme Önerileri
-
-## Portföy Sunum İpucu
-
-Projeyi anlatırken önce iş problemini, sonra Odoo'da uygulanan süreci, ardından SQL raporlarını ve Power BI dashboard verilerini gösterin. Son bölümde süreci SAP MM kavramlarıyla ilişkilendirerek ERP danışmanlığına uygunluğunu vurgulayın.

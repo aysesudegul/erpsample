@@ -2,9 +2,9 @@
 
 ## Amaç
 
-Bu klasör, ERP Satın Alma ve Stok Yönetimi Portföy Projesi için hazırlanmış PostgreSQL raporlama modelini içerir.
+Bu klasör, ERP satın alma ve stok yönetimi çalışması için hazırlanmış PostgreSQL raporlama modelini içerir.
 
-SQL dosyaları Odoo veritabanına bağlanmaz ve Odoo kurulumunu değiştirmez. Odoo'da uygulanan süreç, portföy ve analiz amacıyla ayrı bir PostgreSQL veri modeli üzerinde temsil edilir.
+SQL dosyaları Odoo veritabanına bağlanmaz ve Odoo kurulumunu değiştirmez. Odoo'da uygulanan süreç, analiz amacıyla ayrı bir PostgreSQL veri modeli üzerinde temsil edilir.
 
 ## Dosyalar
 

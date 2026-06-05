@@ -2,13 +2,13 @@
 
 ## Proje Adı
 
-ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+ERP Satın Alma ve Stok Yönetimi Projesi
 
 ## Genel Bakış
 
 Bu proje, NovaTech Office Supplies adlı örnek bir ofis ekipmanları şirketi için Odoo ERP üzerinde uygulanmış satın alma ve stok yönetimi çalışmasıdır.
 
-Proje; Odoo süreç uygulaması, SAP MM kavram eşleştirmesi, PostgreSQL raporlaması ve Power BI chart data dosyalarını tek bir GitHub portföy reposunda birleştirir.
+Proje; Odoo süreç uygulaması, SAP MM kavram eşleştirmesi, PostgreSQL raporlaması ve Power BI chart data dosyalarını tek bir repoda birleştirir.
 
 ## İş Problemi
 
@@ -36,7 +36,7 @@ Projede aşağıdaki çözüm uygulanmıştır:
 7. PostgreSQL raporları hazırlandı.
 8. Power BI için chart data dosyaları oluşturuldu.
 
-## Öğrenim ve Portföy Kazanımları
+## Çalışmanın Kapsadığı Konular
 
 Bu proje şu becerileri gösterir:
 
@@ -57,15 +57,6 @@ Bu proje şu becerileri gösterir:
 | Mechanical Keyboard | 27 | 30 | Minimum stok altında |
 | 24-inch Monitor | 8 | 10 | Minimum stok altında |
 
-## Kariyer Bağlantısı
+## Genel Değerlendirme
 
-Bu proje aşağıdaki roller için portföy çıktısı olarak kullanılabilir:
-
-- Junior SAP MM Consultant
-- Junior ERP Consultant
-- ERP Support Specialist
-- Business Analyst
-- Procurement Analyst
-- Inventory Analyst
-
-Proje, iş süreci anlama, ERP uygulama, SQL raporlama ve BI odaklı analiz hazırlama becerilerini birlikte gösterir.
+Proje, iş süreci anlama, ERP uygulama, SQL raporlama ve BI odaklı analiz hazırlama adımlarını birlikte gösterir.

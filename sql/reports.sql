@@ -1,4 +1,4 @@
--- ERP Satın Alma ve Stok Yönetimi Portföy Projesi
+-- ERP satın alma ve stok yönetimi raporlama sorguları
 -- PostgreSQL raporlama sorguları
 
 -- 1. Mevcut Stok Raporu
