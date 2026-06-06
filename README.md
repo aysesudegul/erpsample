@@ -4,11 +4,12 @@ Proje Amacı
 
 Bu projede küçük bir ofis ekipmanları şirketi için satın alma, stok ve satış sürecini uçtan uca kurguladım. Süreci Odoo ERP mantığına göre düşündüm; tedarikçi, müşteri ve ürün bilgilerini oluşturdum, satın alma siparişi ve mal kabul adımlarını tamamladım, ardından satış ve teslimat sonrası stok çıkışını takip ettim.
 
-Sadece ERP adımlarını yazmakla kalmadım. Bu sürecin raporlanabilir olması için ayrı bir PostgreSQL modeli hazırladım ve Power BI tarafı için CSV veri setleri ekledim. Böylece süreç, veri tabanı ve dashboard tarafı aynı örnek senaryo içinde birbirine bağlandı.
+Bu sürecin raporlanabilir olması için ayrı bir PostgreSQL modeli hazırladım ve Power BI tarafı için CSV veri setleri ekledim. Böylece süreç, veri tabanı ve dashboard tarafı aynı örnek senaryo içinde birbirine bağlandı.
 
-Not: Bu repo doğrudan canlı bir Odoo veritabanına bağlanmaz. Odoo'da yapılan süreci temsil eden örnek PostgreSQL tabloları, SQL raporları ve Power BI veri dosyaları içerir.
+EkNot: Bu repo doğrudan canlı bir Odoo veritabanına bağlanmaz. Odoo'da yapılan süreci temsil eden örnek PostgreSQL tabloları, SQL raporları ve Power BI veri dosyaları içerir.
 
-React tabanlı simulator uygulaması `web-app/` klasöründe duruyor. Ana dokümanlar, SQL dosyaları ve dashboard verileri aynı repo içinde toplandı.
+React tabanlı simulator uygulaması `web-app/` klasöründe
+Ana dokümanlar, SQL dosyaları ve dashboard verileri aynı repo içinde toplandı.
 
 İş Senaryosu
 
@@ -29,7 +30,7 @@ Bu senaryoda takip ettiğim ana süreçler:
 - Kritik stok ve yenileme ihtiyacı
 - SQL ve Power BI ile raporlama
 
-## Kullanılan Araçlar
+Kullanılan Araçlar
 
 - Odoo ERP
 - PostgreSQL
@@ -82,7 +83,7 @@ Hazırladığım SQL raporları:
 
 Stok hesabını `stok_hareketleri` tablosu üzerinden yaptım. Mal kabul hareketlerini `SATIN_ALMA_GIRIS`, teslimat hareketlerini de `SATIS_CIKIS` olarak tuttum.
 
-## Power BI Dashboard Entegrasyonu
+Power BI Dashboard Entegrasyonu
 
 Power BI için ayrı CSV dosyaları hazırladım. Bu dosyalar stok, satın alma, satış ve karlılık analizlerine kaynak olacak şekilde düzenlendi.
 
